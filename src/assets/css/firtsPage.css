@@ -1,0 +1,266 @@
+@media (max-width : 768px) {
+    .navBarButton {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navBarButton a {
+        padding: 2rem 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        font-size: 1.4rem;
+        background-color: #012237;
+        color: white;
+        font-weight: 500;
+        border-radius: 0.7rem;
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .navBarButton a #iconNavbar {
+        color: #fdb224;
+    }
+
+    .mainData {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-block: 2rem;
+    }
+
+    .mainData .TotalCoins {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        font-size: 5rem;
+        font-weight: bold;
+    }
+
+    .mainData .TotalCoins .iconCoin {
+        color: #FFD239;
+    }
+
+    .mainData .mainImgCoin {
+        margin-block: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mainData .mainImgCoin img {
+        width: 55%;
+        cursor: pointer;
+    }
+
+    .energy {
+        width: 100%;
+        position: relative;
+    }
+
+    .energy .energyText {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1rem;
+    }
+
+    .energyText h2 {
+        text-transform: capitalize;
+        font-weight: 400;
+    }
+
+    .energyText span {
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    .energy .percentage {
+        margin-top: 1rem;
+        position: relative;
+        height: 1.6rem;
+        background-color: #012237;
+        --tw-border-opacity: 1;
+        border-color: rgb(7 55 85 / var(--tw-border-opacity));
+        border-width: 1px;
+        width: 100%;
+        border-radius: 1.2rem;
+    }
+
+    .PercenetCount {
+        height: 100%;
+        background: linear-gradient(to right, #dc7b0c, #fff973);
+        margin-top: 1rem;
+        border-radius: 1.2rem;
+        cursor: pointer;
+    }
+
+    .footerBtn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #012237;
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 1.5rem 1.5rem;
+    }
+
+    .footerBtn button {
+        color: #808187;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        text-transform: capitalize;
+        background: none;
+        padding: 1.2rem 3rem;
+    }
+
+    .footerBtn .footerIcon {
+        font-size: 2rem;
+    }
+
+    .footerBtn button.active {
+        background-color: #00385B;
+        border-radius: 0.7rem;
+        color: #FBB124;
+        transition: 0.4s;
+    }
+}
+
+@media (max-width : 550px) {
+    .footerBtn {
+        width: 100%;
+        padding: 1.5rem clamp(1rem, 1vw, 2rem);
+        margin-top: 3rem !important;
+    }
+
+    .footerBtn button {
+        font-size: 1rem;
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width : 500px) {
+
+    .mainData .mainImgCoin {
+        margin-block: 2.5rem;
+    }
+
+    .footerBtn button {
+        font-size: 1rem;
+        gap: 1rem;
+        padding: 1.2rem 2rem;
+    }
+}
+
+@media (max-width : 440px) {
+    .navBarButton a {
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
+    }
+
+    .mainData .TotalCoins {
+        margin-top: 2rem;
+    }
+
+    .mainData .mainImgCoin {
+        margin-block: 3rem;
+    }
+
+}
+
+@media (max-width : 400px) {
+
+    .footerBtn {
+        padding: 2rem 1rem;
+        margin-top: 4rem !important;
+    }
+
+    .footerBtn button {
+        font-size: 1rem;
+        gap: 0.8rem;
+        padding: 1.2rem 2rem;
+    }
+
+    .footerBtn .footerIcon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width : 360px) {
+    .navBarButton a {
+        padding: 1.4rem;
+        font-size: 1.2rem;
+    }
+
+    .mainData .TotalCoins {
+        margin-top: 1.5rem;
+    }
+
+    .mainData .mainImgCoin {
+        margin-block: 2.1rem;
+    }
+
+    .footerBtn {
+        padding: 2rem 1rem;
+        margin-top: 4rem !important;
+        flex-wrap: wrap;
+    }
+
+    .footerBtn button {
+        font-size: 1rem;
+        gap: 0.8rem;
+        padding: 1.2rem 2rem;
+    }
+
+    .footerBtn .footerIcon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width : 323px) {
+    .navBarButton a {
+        padding: 1.3rem;
+        font-size: 1.1rem;
+    }
+
+    .mainData .TotalCoins {
+        margin-top: 1.5rem;
+    }
+
+    .mainData .mainImgCoin {
+        margin-block: 2.1rem;
+    }
+
+    .mainData .mainImgCoin img {
+        width: 62%;
+    }
+}
+
+@media (max-width : 323px) {
+    .navBarButton a {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .mainData .mainImgCoin img {
+        width: 64%;
+    }
+
+    .footerBtn {
+        gap: 1rem;
+    }
+
+    .footerBtn button {
+        font-size: 1.2rem;
+    }
+}
