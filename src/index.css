@@ -13,7 +13,7 @@ html{
 @media (max-width : 600px) {
 	body {
 		width: 100vw;
-		height: 100vh;
+		height: 100dvh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -23,7 +23,8 @@ html{
 	.mainContainer{
 		background: linear-gradient(to top , #0b0c0e , #00446d);
 		height: 100dvh;
-		padding: 2rem 4rem;
+		padding: 4rem 4rem;
+		padding-bottom: 4rem;
 	}
 	@keyframes floatUp {
 		0% {
@@ -58,7 +59,7 @@ html{
 @media (max-width : 550px) {
 
 	.mainContainer{
-		padding: 2rem clamp(1.5rem , 1vw , 4rem);
+		padding: 3rem clamp(1.5rem , 1vw , 4rem);
 	}
 
 }

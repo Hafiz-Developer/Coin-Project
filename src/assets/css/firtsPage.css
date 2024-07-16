@@ -39,6 +39,7 @@
         gap: 1.4rem;
         font-size: 5rem;
         font-weight: bold;
+        margin-top: 3rem;
     }
 
     .mainData .TotalCoins .iconCoin {
@@ -46,14 +47,14 @@
     }
 
     .mainData .mainImgCoin {
-        margin-block: 2rem;
+        margin-block: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     .mainData .mainImgCoin img {
-        width: 55%;
+        width: 80%;
         cursor: pointer;
     }
 
@@ -107,6 +108,7 @@
         width: 100%;
         border-radius: 0.5rem;
         padding: 1.5rem 1.5rem;
+        margin-top: 5rem;
     }
 
     .footerBtn button {
@@ -140,7 +142,6 @@
     .footerBtn {
         width: 100%;
         padding: 1.5rem clamp(1rem, 1vw, 2rem);
-        margin-top: 3rem !important;
     }
 
     .footerBtn button {
@@ -151,9 +152,7 @@
 
 @media (max-width : 500px) {
 
-    .mainData .mainImgCoin {
-        margin-block: 2.5rem;
-    }
+  
 
     .footerBtn button {
         font-size: 1rem;
@@ -175,20 +174,19 @@
     .mainData .mainImgCoin {
         margin-block: 3rem;
     }
+    .footerBtn {
+        padding: 2rem 4rem;
+        flex-wrap: wrap;
+    }
 
 }
 
 @media (max-width : 400px) {
 
-    .footerBtn {
-        padding: 2rem 1rem;
-        margin-top: 4rem !important;
-    }
 
     .footerBtn button {
-        font-size: 1rem;
-        gap: 0.8rem;
-        padding: 1.2rem 2rem;
+        font-size: 1.2rem;
+        gap: 1rem;
     }
 
     .footerBtn .footerIcon {
