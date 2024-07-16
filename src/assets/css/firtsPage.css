@@ -36,14 +36,15 @@
     .mainData .TotalCoins {
         display: flex;
         align-items: center;
-        gap: 1.4rem;
+        justify-content: center;
+        gap: 0.2rem;
         font-size: 5rem;
         font-weight: bold;
         margin-top: 3rem;
     }
 
-    .mainData .TotalCoins .iconCoin {
-        color: #FFD239;
+    .mainData .TotalCoins img {
+        width: 20%;
     }
 
     .mainData .mainImgCoin {
@@ -54,7 +55,7 @@
     }
 
     .mainData .mainImgCoin img {
-        width: 80%;
+        width: 70%;
         cursor: pointer;
     }
 
