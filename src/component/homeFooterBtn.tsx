@@ -4,8 +4,8 @@ import { FaHome } from "react-icons/fa";
 import { MdEnergySavingsLeaf } from "react-icons/md";
 const FooterBtn = () => {
   const [activation, setActivation] = useState("home");
-  const handleClick = (e: any) => {
-    setActivation(e);
+  const handleClick = (path:string) => {
+    setActivation(path);
   };
   return (
     <>

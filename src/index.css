@@ -28,6 +28,9 @@ body {
 	width: 70rem;
 	padding: 4rem 4rem;
 	padding-bottom: 4rem;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
 }
 
 

@@ -1,20 +1,17 @@
-import Main from "./component/main"
-import NavBarButton from "./component/navBarButton"
-import './assets/css/firtsPage.css'
-import FooterBtn from "./component/homeFooterBtn"
-
+import Mid from "./component/mid";
+import NavBarButton from "./component/navBarButton";
+import FooterBtn from "./component/homeFooterBtn";
 
 function App() {
-
   return (
     <>
-   <div className="mainContainer">
-    <NavBarButton/>
-    <Main/>
-    <FooterBtn/>
-   </div>
+      <div className="mainContainer">
+        <NavBarButton />
+        <Mid />
+        <FooterBtn />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

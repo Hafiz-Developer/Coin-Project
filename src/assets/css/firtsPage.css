@@ -24,7 +24,7 @@
         color: #fdb224;
     }
 
-    .mainData {
+    .MidData {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -32,7 +32,7 @@
         margin-block: 2rem;
     }
 
-    .mainData .TotalCoins {
+    .MidData .TotalCoins {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,18 +42,18 @@
         margin-top: 3rem;
     }
 
-    .mainData .TotalCoins img {
+    .MidData .TotalCoins img {
         width: 20%;
     }
 
-    .mainData .mainImgCoin {
+    .MidData .mainImgCoin {
         margin-block: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .mainData .mainImgCoin img {
+    .MidData .mainImgCoin img {
         width: 70%;
         cursor: pointer;
     }
@@ -178,7 +178,7 @@
 
 @media (max-width : 500px) {
 
-    .mainData .mainImgCoin img {
+    .MidData .mainImgCoin img {
         width: 80%;
         cursor: pointer;
     }
@@ -196,11 +196,11 @@
         font-size: 1.2rem;
     }
 
-    .mainData .TotalCoins {
+    .MidData .TotalCoins {
         margin-top: 2rem;
     }
 
-    .mainData .mainImgCoin {
+    .MidData .mainImgCoin {
         margin-block: 3rem;
     }
     .footerBtn {
@@ -229,11 +229,11 @@
         font-size: 1.2rem;
     }
 
-    .mainData .TotalCoins {
+    .MidData .TotalCoins {
         margin-top: 1.5rem;
     }
 
-    .mainData .mainImgCoin {
+    .MidData .mainImgCoin {
         margin-block: 2.1rem;
     }
 
@@ -260,15 +260,15 @@
         font-size: 1.1rem;
     }
 
-    .mainData .TotalCoins {
+    .MidData .TotalCoins {
         margin-top: 1.5rem;
     }
 
-    .mainData .mainImgCoin {
+    .MidData .mainImgCoin {
         margin-block: 2.1rem;
     }
 
-    .mainData .mainImgCoin img {
+    .MidData .mainImgCoin img {
         width: 62%;
     }
 }
@@ -279,7 +279,7 @@
         font-size: 1rem;
     }
 
-    .mainData .mainImgCoin img {
+    .MidData .mainImgCoin img {
         width: 64%;
     }
 

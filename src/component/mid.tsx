@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import Coin from "../assets/images/coin.png";
+import Coin from "../assets/images/coin.ico";
 import textImage from "../assets/images/textImage.png";
+
 interface FloatingText {
   id: number;
   x: number;
   y: number;
 }
 
-const Main = () => {
+const Mid = () => {
   const maxEnergy = 2000;
   const [value, setValue] = useState(0);
   const [energy, setEnergy] = useState(maxEnergy);
@@ -49,18 +50,18 @@ const Main = () => {
 
   return (
     <>
-      <div className="mainData">
+      <div className="MidData">
         <div className="TotalCoins">
           <img src={textImage} alt="" />
           {value.toLocaleString()}
         </div>
-        <div className="mainImgCoin">
+        <div className="MidImgCoin">
           <img
             src={Coin}
             onClick={handleClick}
             onMouseDown={(e) => e.preventDefault()}
             draggable={true}
-            className="coin-button .no-select"
+            className="coin-button no-select"
             alt="Puma"
           />
         </div>
@@ -92,4 +93,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Mid;
