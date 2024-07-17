@@ -22,54 +22,6 @@ body {
 	background-color: #121212;
 }
 
-.mainContainer {
-	background: linear-gradient(to top, #0b0c0e, #00446d);
-	height: 100dvh;
-	width: 70rem;
-	padding: 4rem 4rem;
-	padding-bottom: 4rem;
-	display: flex;
-	flex-flow: column;
-	justify-content: space-between;
-	overflow: hidden;
-}
-
-
-
-
-@media (max-width : 600px) {
-	.mainContainer {
-		width: 100dvw;
-	}
-}
-
-@media (max-width : 550px) {
-
-	.mainContainer {
-		padding: 3rem clamp(1.5rem, 1vw, 4rem);
-	}
-
-}
-
-@media (max-width : 460px) {
-
-	.mainContainer {
-		padding: 3rem clamp(1.5rem, 1vw, 4rem);
-	}
-
-
-}
-
-@media (max-width : 323px) {
-
-	.mainContainer {
-		padding: 3rem clamp(0.7rem, 1vw, 4rem);
-	}
-
-}
-
-
-
 .no-select {
 	-webkit-user-select: none;
 	/* Safari */
