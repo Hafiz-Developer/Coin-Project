@@ -1,32 +1,36 @@
 .DailyRewards {
-	background: linear-gradient(to top, #0b0c0e, #00446d);
-	height: 100dvh;
-	width: 70rem;
+    background: linear-gradient(to top, #0b0c0e, #00446d);
+    height: 100dvh;
+    width: 70rem;
     padding: 0rem 3rem;
 }
- .dataFirst {
+
+.dataFirst {
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
 }
- .dataFirst img{
+
+.dataFirst img {
     width: 40%;
 }
-.dataFirst h1{
+
+.dataFirst h1 {
     font-size: 3rem;
     letter-spacing: 0.3rem;
     font-style: oblique;
 }
-.youtube{
+
+.youtube {
     margin-top: 4rem;
 }
 
-.youtube h1{
-    font-size: 2rem ;
+.youtube h1 {
+    font-size: 2rem;
 }
 
-.youtubeClick{
+.youtubeClick {
     background-color: black;
     border-radius: 3rem;
     margin-top: 2rem;
@@ -35,51 +39,62 @@
     align-items: center;
     justify-content: space-between;
 }
-.youtubeClick :is(.first , .insideText){
+
+#dailyP {
+    padding: 0rem 2rem 0.3rem 0.3rem;
+}
+
+.youtubeClick :is(.first, .insideText) {
     display: flex;
     align-items: center;
 }
-.textYoutube{
+
+.textYoutube {
     display: flex;
     flex-flow: column;
     gap: 0.4rem;
 }
-.textYoutube h1{
+
+.textYoutube h1 {
     text-transform: capitalize;
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
     font-weight: 100;
 }
-.insideText{
+
+.insideText {
     font-size: 1.3rem;
     font-weight: 900;
     letter-spacing: 0.1rem;
 }
-.youtubeClick .first > img{
+
+.youtubeClick .first>img {
     width: 16%;
     cursor: pointer;
 }
 
-.insideText img{
- width: 6%;
+.insideText img {
+    width: 6%;
 }
-.second{
-    font-size:2rem;
+
+.second {
+    font-size: 2rem;
 }
 
 
 @media (max-width : 600px) {
-	.DailyRewards {
-		width: 100dvw;
-	}
+    .DailyRewards {
+        width: 100dvw;
+    }
 }
 
 @media (max-width : 550px) {
 
-	.DailyRewards {
-		padding: 0rem clamp(1.5rem, 1vw, 4rem);
-	}
-    .youtubeClick{
+    .DailyRewards {
+        padding: 0rem clamp(1.5rem, 1vw, 4rem);
+    }
+
+    .youtubeClick {
         padding: 1.4rem 1rem 1.4rem 0rem;
     }
 
@@ -87,17 +102,20 @@
 
 @media (max-width : 460px) {
 
-	.DailyRewards {
-		padding: 0em clamp(1.5rem, 1vw, 4rem);
-	}
-    .youtubeClick{
+    .DailyRewards {
+        padding: 0em clamp(1.5rem, 1vw, 4rem);
+    }
+
+    .youtubeClick {
         padding: 1.4rem 1rem 1.4rem 1rem;
         border-radius: 1.5rem;
     }
-    .textYoutube h1{
+
+    .textYoutube h1 {
         font-size: 1rem;
     }
-    .insideText{
+
+    .insideText {
         font-size: 1rem;
     }
 
@@ -105,8 +123,8 @@
 
 @media (max-width : 323px) {
 
-	.DailyRewards {
-		padding: 0rem clamp(0.7rem, 1vw, 4rem);
-	}
+    .DailyRewards {
+        padding: 0rem clamp(0.7rem, 1vw, 4rem);
+    }
 
 }
