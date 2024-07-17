@@ -39,7 +39,7 @@
         gap: 0.2rem;
         font-size: 5rem;
         font-weight: bold;
-        margin-top: 3rem;
+        margin-block: 3rem;
     }
 
     .MidData .TotalCoins img {
@@ -47,12 +47,11 @@
     }
 
     .MidData .mainImgCoin {
-        margin-block: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
+    
     .MidData .mainImgCoin img {
         width: 70%;
         cursor: pointer;
@@ -88,6 +87,7 @@
     .energy {
         width: 100%;
         position: relative;
+        margin-block: 3rem 0rem;
     }
 
     .energy .energyText {
