@@ -1,5 +1,4 @@
 
-
     .mainContainer {
         background: linear-gradient(to top, #0b0c0e, #00446d);
         height: 100dvh;
@@ -9,7 +8,7 @@
         display: flex;
         flex-flow: column;
         justify-content: space-between;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
     .navBarButton {
         display: flex;

@@ -6,61 +6,56 @@ import { IoIosArrowForward } from "react-icons/io";
 
 const LastTask = () => {
   return (
-    <div className="youtube">
-        <h1>Tasks List</h1>
-
-        <div className="youtubeClick " id="dailyP">
-          <div className="first" id="first">
-            <img src={facebook} alt="" />
-            <div className="textYoutube">
-              <h1>Join Fcaebook Group</h1>
-              <div className="insideText" >
-                <img src={textImage} alt="" />
-                +100,000
-              </div>
+    <div className="lastTask">
+      <h1>Tasks List</h1>
+      <div className="lastTask_Click ">
+        <div className="lastTask_first">
+          <img src={facebook} alt="" />
+          <div className="lastTask_text">
+            <h1>Join Fcaebook Group</h1>
+            <div className="lastTask_insideText">
+              <img src={textImage} alt="" />
+              +100,000
             </div>
           </div>
-
-          <div className="second">
-            <IoIosArrowForward />
-          </div>
         </div>
-        <div className="youtubeClick " id="dailyP">
-          <div className="first" id="first">
-            <img src={instagram} alt="" />
-            <div className="textYoutube">
-              <h1>Follow our i account</h1>
-              <div className="insideText">
-                <img src={textImage} alt="" />
-                +100,000
-              </div>
-            </div>
-          </div>
-
-          <div className="second">
-            <IoIosArrowForward />
-          </div>
+        <div className="lastTask_second">
+          <IoIosArrowForward />
         </div>
-        <div className="youtubeClick " id="dailyP">
-          <div className="first" id="first">
-            <img src={ticktok} alt="" />
-            <div className="textYoutube">
-              <h1>Follow our t/t account</h1>
-              <div className="insideText">
-                <img src={textImage} alt="" />
-                +100,000
-              </div>
-            </div>
-          </div>
-
-          <div className="second">
-            <IoIosArrowForward />
-          </div>
-        </div>
-        
-       
       </div>
-  )
-}
+      <div className="lastTask_Click ">
+        <div className="lastTask_first">
+          <img src={instagram} alt="" />
+          <div className="lastTask_text">
+            <h1>Join Fcaebook Group</h1>
+            <div className="lastTask_insideText">
+              <img src={textImage} alt="" />
+              +100,000
+            </div>
+          </div>
+        </div>
+        <div className="lastTask_second">
+          <IoIosArrowForward />
+        </div>
+      </div>
+      <div className="lastTask_Click ">
+        <div className="lastTask_first">
+          <img src={ticktok} alt="" />
+          <div className="lastTask_text">
+            <h1>Join Fcaebook Group</h1>
+            <div className="lastTask_insideText">
+              <img src={textImage} alt="" />
+              +100,000
+            </div>
+          </div>
+        </div>
+        <div className="lastTask_second">
+          <IoIosArrowForward />
+        </div>
+      </div>
+      
+    </div>
+  );
+};
 
-export default LastTask
+export default LastTask;

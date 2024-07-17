@@ -4,23 +4,23 @@ import { IoIosArrowForward } from "react-icons/io";
 
 const DailyTask = () => {
   return (
-    <div className="youtube">
+    <div className="DailyTask">
         <h1>Daily Task</h1>
 
-        <div className="youtubeClick " id="dailyP">
-          <div className="first">
-            <img src={dailyTask} alt="" />
+        <div className="DailyTaskClick " >
 
-            <div className="textYoutube">
+          <div className="DailyTask_first">
+            <img src={dailyTask} alt="" />
+            <div className="textDailyTask">
               <h1>the trend you can't ignore</h1>
-              <div className="insideText">
+              <div className="DailyTask_insideText">
                 <img src={textImage} alt="" />
                 +100,000
               </div>
             </div>
           </div>
 
-          <div className="second">
+          <div className="DailyTask_second">
             <IoIosArrowForward />
           </div>
         </div>

@@ -4,6 +4,7 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
+    margin-top: -6rem;
 }
 
 .dataFirst img {
@@ -11,32 +12,33 @@
 }
 
 .dataFirst h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 0.3rem;
     font-style: oblique;
+    position: relative;
+    top: -2rem;
 }
 
-.youtube {
-    margin-top: 4rem;
-}
+/* .youtube{
+    margin-top: -5rem;
+} */
 
-.youtube h1 {
-    font-size: 2rem;
+.youtube h1 , .DailyTask h1  , .lastTask h1{
+    font-size: 1.8rem;
 }
 
 .youtubeClick {
     background-color: black;
-    border-radius: 3rem;
+    border-radius: 5rem;
     margin-top: 2rem;
-    padding: 1.4rem 2rem 1.4rem 0rem;
+    padding: 0.3rem 2rem 0.3rem 0rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    user-select: none;
 }
 
-#dailyP {
-    padding: 0rem 2rem 0.3rem 0.3rem;
-}
+
 
 .youtubeClick :is(.first, .insideText) {
     display: flex;
@@ -46,42 +48,104 @@
 .textYoutube {
     display: flex;
     flex-flow: column;
-    gap: 0.4rem;
 }
 
-.textYoutube h1 {
+.textYoutube h1 , .textDailyTask h1 , .lastTask_text h1 {
     text-transform: capitalize;
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: 0.1rem;
     font-weight: 100;
 }
 
-.insideText {
-    font-size: 1.3rem;
+.insideText , .DailyTask_insideText , .lastTask_insideText {
+    font-size: 1rem;
     font-weight: 900;
     letter-spacing: 0.1rem;
+    position: relative;
+    right: 0.3rem;
+    top: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
 }
 
-.youtubeClick .first>img {
-    width: 16%;
+.youtubeClick .first > img  {
+    width: 12%;
     cursor: pointer;
 }
-.youtubeClick #first img {
-    width: 10%;
-}
+
 
 .insideText img {
-    width: 6%;
-}
-#insideText img {
-    width: 6%;
+    width: 4%;
 }
 
-.second {
+.second , .DailyTask_second , .lastTask_second {
     font-size: 2rem;
+    cursor: pointer;
+}
+
+.DailyTask{
+    user-select: none;
+    margin-top: 1.5rem;
+}
+
+.DailyTaskClick{
+    background-color: black;
+    border-radius: 5rem;
+    margin-top: 1.5rem;
+    padding: 0rem 2rem 0rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+.DailyTask :is(.DailyTaskClick , .DailyTask_first , .DailyTask_second){
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.DailyTask_first img{
+    width: 9%;
+    cursor: pointer;
+}
+.DailyTask_insideText > img{
+  width: 5%;
+  cursor: pointer;
+
 }
 
 
+.lastTask{
+    user-select: none;
+    margin-top: 1.5rem;
+}
+
+.lastTask_Click{
+    background-color: black;
+    border-radius: 5rem;
+    margin-top: 1.5rem;
+    padding: 0.4rem 2rem 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+.lastTask :is(.lastTask_Click , .lastTask_first, .lastTask_insideText){
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.lastTask_first img{
+    width: 7%;
+    cursor: pointer;
+}
+.lastTask_insideText > img{
+  width: 5%;
+  cursor: pointer;
+
+}
 
 
 @media (max-width : 550px) {
