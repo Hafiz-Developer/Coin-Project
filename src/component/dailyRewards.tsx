@@ -5,7 +5,7 @@ import LastTask from "./lastTask";
 import Youtube from "./youtube";
 const DailyRewards = () => {
   return (
-    <>
+    <div className="daily">
       <div className="dataFirst">
         <img src={DailyImage} alt="" />
         <h1>Earn More Coins</h1>
@@ -13,7 +13,7 @@ const DailyRewards = () => {
       <Youtube/>
       <DailyTask/>
       <LastTask/>
-    </>
+    </div>
   );
 };
 

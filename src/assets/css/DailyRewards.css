@@ -1,3 +1,7 @@
+.daily{
+    padding: 0rem 4rem;
+    margin-top: 2rem;
+}
 
 .dataFirst {
     display: flex;
@@ -106,7 +110,7 @@
 }
 
 .DailyTask_first img{
-    width: 9%;
+    width: 11%;
     cursor: pointer;
 }
 .DailyTask_insideText > img{
@@ -118,7 +122,7 @@
 
 .lastTask{
     user-select: none;
-    margin-top: 1.5rem;
+    margin-block: 1.5rem;
 }
 
 .lastTask_Click{
@@ -138,7 +142,7 @@
 }
 
 .lastTask_first img{
-    width: 7%;
+    width: 9%;
     cursor: pointer;
 }
 .lastTask_insideText > img{
@@ -148,31 +152,43 @@
 }
 
 
+@media (max-width : 500px) {
+    .youtubeClick {
+        padding: 0.7rem 2rem 0.7rem 0rem;
+    }
+  
+    .DailyTask_first > img{
+        width: 15%;
+        cursor: pointer;
+    }
+    .lastTask_Click{
+        padding: 0.8rem 2rem 0.8rem 1rem;
+    }
+}
+
+
+
 @media (max-width : 550px) {
 
-   
-
-    .youtubeClick {
-        padding: 1.4rem 1rem 1.4rem 0rem;
+    .daily {
+        padding-inline:  clamp(1.5rem, 1vw, 4rem);
     }
 
 }
 
 @media (max-width : 460px) {
 
-  
-    .youtubeClick {
-        padding: 1.4rem 1rem 1.4rem 1rem;
-        border-radius: 1.5rem;
+    .daily {
+        padding-inline:  clamp(1.5rem, 1vw, 4rem);
     }
 
-    .textYoutube h1 {
-        font-size: 1rem;
-    }
-
-    .insideText {
-        font-size: 1rem;
-    }
 
 }
 
+@media (max-width : 323px) {
+
+    .daily {
+        padding-inline:  clamp(0.7rem, 1vw, 4rem);
+    }
+
+}

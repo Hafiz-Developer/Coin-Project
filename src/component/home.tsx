@@ -5,11 +5,11 @@ import "../assets/css/homePage.css";
 
 function Home() {
   return (
-    <>
+    <div className="homeMain">
         <NavBarButton />
         <Mid />
       {/* </div> */}
-    </>
+    </div>
   );
 }
 

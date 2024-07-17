@@ -3,12 +3,15 @@
         background: linear-gradient(to top, #0b0c0e, #00446d);
         height: 100dvh;
         width: 70rem;
+        /* overflow: hidden; */
+    }
+    .homeMain{
         padding: 4rem 4rem;
         padding-bottom: 4rem;
         display: flex;
         flex-flow: column;
         justify-content: space-between;
-        /* overflow: hidden; */
+        
     }
     .navBarButton {
         display: flex;
@@ -147,7 +150,6 @@
         width: 100%;
         border-radius: 0.5rem;
         padding: 1.5rem 1.5rem;
-        margin-top: 5rem;
     }
 
     .footerBtn button {
@@ -251,7 +253,6 @@
 
     .footerBtn {
         padding: 2rem 1rem;
-        margin-top: 4rem !important;
         flex-wrap: wrap;
     }
 
@@ -313,7 +314,7 @@
 
 @media (max-width : 550px) {
 
-    .mainContainer {
+    .homeMain {
         padding: 3rem clamp(1.5rem, 1vw, 4rem);
     }
 
@@ -321,7 +322,7 @@
 
 @media (max-width : 460px) {
 
-    .mainContainer {
+    .homeMain {
         padding: 3rem clamp(1.5rem, 1vw, 4rem);
     }
 
@@ -330,7 +331,7 @@
 
 @media (max-width : 323px) {
 
-    .mainContainer {
+    .homeMain {
         padding: 3rem clamp(0.7rem, 1vw, 4rem);
     }
 
