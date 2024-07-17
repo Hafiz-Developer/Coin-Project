@@ -22,7 +22,7 @@ const FooterBtn = () => {
           home
         </button>
         <button
-          className={activation === "dailyRewards" ? "active" : ""}
+          className={activation === "DailyRewards" ? "active" : ""}
           onClick={() => handleClick("DailyRewards")}
         >
           <FaHome className="footerIcon" />

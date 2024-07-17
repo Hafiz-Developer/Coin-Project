@@ -8,7 +8,7 @@ const Youtube = () => {
         <h1>Hamster Youtube</h1>
 
         <div className="youtubeClick">
-          <div className="first">
+          <div className="first" >
             <img src={YoutubeImage} alt="" />
 
             <div className="textYoutube">
