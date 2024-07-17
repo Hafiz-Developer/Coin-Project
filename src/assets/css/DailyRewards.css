@@ -56,7 +56,7 @@
 
 .textYoutube h1 , .textDailyTask h1 , .lastTask_text h1 {
     text-transform: capitalize;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     letter-spacing: 0.1rem;
     font-weight: 100;
 }
@@ -74,7 +74,7 @@
 }
 
 .youtubeClick .first > img  {
-    width: 12%;
+    width: 15%;
     cursor: pointer;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .DailyTask_first img{
-    width: 11%;
+    width: 15%;
     cursor: pointer;
 }
 .DailyTask_insideText > img{
@@ -157,10 +157,6 @@
         padding: 0.7rem 2rem 0.7rem 0rem;
     }
   
-    .DailyTask_first > img{
-        width: 15%;
-        cursor: pointer;
-    }
     .lastTask_Click{
         padding: 0.8rem 2rem 0.8rem 1rem;
     }
