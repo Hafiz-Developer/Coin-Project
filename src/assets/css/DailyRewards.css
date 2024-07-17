@@ -1,6 +1,5 @@
 .daily{
-    padding: 0rem 4rem;
-    margin-top: 2rem;
+    padding: 3rem 4rem;
 }
 
 .dataFirst {
@@ -8,7 +7,6 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    margin-top: -6rem;
 }
 
 .dataFirst img {
@@ -122,7 +120,7 @@
 
 .lastTask{
     user-select: none;
-    margin-block: 1.5rem;
+    margin-block: 2.5rem;
 }
 
 .lastTask_Click{
