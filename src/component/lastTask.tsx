@@ -5,7 +5,7 @@ import instagram from "../assets/images/instagram.png";
 import ticktok from "../assets/images/ticktok.png"; 
 import { IoCloseCircle } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
-import { SiTicktick } from "react-icons/si";
+// import { SiTicktick } from "react-icons/si";
 import "../assets/css/popup.css";
 
 // Define a type for tasks
