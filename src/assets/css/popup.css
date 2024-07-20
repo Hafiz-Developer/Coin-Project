@@ -1,0 +1,73 @@
+.form-popup {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-top: 2rem;
+    margin: auto;
+    background-color: #081B28;
+    height: calc(100dvh - 40dvh);
+    width: 70rem;
+    z-index: 9;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .form-popup .close{
+    font-size: 3rem;
+    position: absolute;
+    cursor: pointer;
+    top: 3rem;
+    right: 3rem;
+  }
+  .form-popup > img{
+    width: 20%;
+  }
+  .form-popup h1{
+    font-size: 3rem;
+    text-transform: capitalize;
+  }
+  .form-popup .smallImageCoin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 900;
+    font-style: oblique;
+  }
+  .smallImageCoin img{
+    width: 10%;
+  }
+  .form-popup a{
+    text-decoration: none;
+    background-color: rgb(99, 52, 218);
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: white;
+    padding: 0.7rem 3.5rem;
+    border-radius: 1.2rem;
+  }
+  .btn button{
+    background-color: rgb(99, 52, 218);
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: white;
+    padding: 0.7rem 3.5rem;
+    border-radius: 1.2rem;
+    border: none;
+    outline: none;
+  }
+
+  @media (width < 600px) {
+    .form-popup {
+        margin: auto;
+        width: 100dvw;
+      }
+      .btn button{
+        padding: 0.7rem 2rem;
+      }
+  }

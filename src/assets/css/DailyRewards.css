@@ -84,6 +84,7 @@
 .second , .DailyTask_second , .lastTask_second {
     font-size: 2rem;
     cursor: pointer;
+    transition: 2s ease-in-out;
 }
 
 .DailyTask{
@@ -148,6 +149,7 @@
   cursor: pointer;
 
 }
+
 
 
 @media (max-width : 500px) {
