@@ -24,6 +24,7 @@
   }
   .form-popup > img{
     width: 20%;
+    cursor: pointer;
   }
   .form-popup h1{
     font-size: 3rem;
@@ -39,6 +40,7 @@
   }
   .smallImageCoin img{
     width: 10%;
+    user-select: none;
   }
   .form-popup a{
     text-decoration: none;
@@ -49,8 +51,9 @@
     color: white;
     padding: 0.7rem 3.5rem;
     border-radius: 1.2rem;
+    cursor: pointer;
   }
-  .btn button{
+  .btn {
     background-color: rgb(99, 52, 218);
     font-size: 1.5rem;
     text-transform: capitalize;
@@ -60,6 +63,7 @@
     border-radius: 1.2rem;
     border: none;
     outline: none;
+    cursor: pointer;
   }
 
   @media (width < 600px) {
@@ -67,7 +71,7 @@
         margin: auto;
         width: 100dvw;
       }
-      .btn button{
+      .btn{
         padding: 0.7rem 2rem;
       }
   }
