@@ -5,6 +5,7 @@ import instagram from "../assets/images/instagram.png";
 import ticktok from "../assets/images/ticktok.png"; 
 import { IoCloseCircle } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
+import { SiTicktick } from "react-icons/si";
 import "../assets/css/popup.css";
 
 // Define a type for tasks
@@ -18,7 +19,8 @@ interface Task {
 
 const LastTask: React.FC = () => {
   const [linkVisible, setLinkVisible] = useState<number | null>(null);
-  const [tasksState, setTasksState] = useState<Record<number, { joinClicked: boolean; waitMessage: boolean; claimVisible: boolean }>>({});
+  const [tasksState, setTasksState] = useState<Record<number, { joinClicked: boolean; waitMessage: boolean; claimVisible: boolean; coinsAdded: boolean }>>({});
+  const [totalCoins, setTotalCoins] = useState(0);
 
   const tasks: Task[] = [
     {
@@ -26,21 +28,21 @@ const LastTask: React.FC = () => {
       points: "+100,000",
       title: "Join Facebook Group",
       img: facebook,
-      link: "https://www.facebook.com"  // Add the actual link
+      link: "https://www.facebook.com"
     },
     {
       id: 2,
-      points: "+100,000",
+      points: "+150,000",
       title: "Follow Instagram",
       img: instagram,
-      link: "https://www.instagram.com"  // Add the actual link
+      link: "https://www.instagram.com"
     },
     {
       id: 3,
-      points: "+100,000",
+      points: "+200,000",
       title: "Follow TikTok",
       img: ticktok,
-      link: "https://www.tiktok.com"  // Add the actual link
+      link: "https://www.tiktok.com"
     },
     // Add more tasks as needed
   ];
@@ -49,20 +51,33 @@ const LastTask: React.FC = () => {
     const storedStates = tasks.reduce((acc, task) => {
       const joinClicked = localStorage.getItem(`joinClicked-${task.id}`) === 'true';
       const claimVisible = localStorage.getItem(`claimVisible-${task.id}`) === 'true';
+      const coinsAdded = localStorage.getItem(`coinsAdded-${task.id}`) === 'true';
       const joinTimestamp = localStorage.getItem(`joinTimestamp-${task.id}`);
       const timePassed = joinTimestamp ? Date.now() - parseInt(joinTimestamp, 10) : 0;
-      const timeLeft = 3600000 - timePassed;
+      const timeLeft = 100000 - timePassed; // 1 hour in milliseconds
 
       acc[task.id] = {
         joinClicked,
         waitMessage: joinClicked && timeLeft > 0,
         claimVisible: claimVisible || (joinClicked && timeLeft <= 0),
+        coinsAdded,
       };
       return acc;
-    }, {} as Record<number, { joinClicked: boolean; waitMessage: boolean; claimVisible: boolean }>);
+    }, {} as Record<number, { joinClicked: boolean; waitMessage: boolean; claimVisible: boolean; coinsAdded: boolean }>);
 
     setTasksState(storedStates);
-  }, []);
+
+    // Calculate total coins based on completed tasks
+    const total = tasks.reduce((sum, task) => {
+      const { claimVisible, coinsAdded } = storedStates[task.id] || {};
+      if (claimVisible && !coinsAdded) {
+        const points = parseInt(task.points.replace(/[^0-9]/g, '')); // Remove non-numeric characters
+        return sum + points;
+      }
+      return sum;
+    }, 0);
+    setTotalCoins(total);
+  }, [tasks]);
 
   const openCoin = (task: Task) => {
     setLinkVisible(task.id);
@@ -94,13 +109,18 @@ const LastTask: React.FC = () => {
         return newState;
       });
       localStorage.setItem(`claimVisible-${task.id}`, 'true');
-    }, 3600000); // 1 hour in milliseconds
+
+      // Update total coins after 1 hour
+      localStorage.setItem(`coinsAdded-${task.id}`, 'false');
+    }, 100000); // 1 hour in milliseconds
   };
 
+  
   return (
     <>
       <div className="lastTask">
         <h1>Tasks List</h1>
+        <h2>Total Coins: {totalCoins}</h2>
         {tasks.map(task => (
           <div key={task.id} className="lastTask_Click">
             <div className="lastTask_first">
@@ -129,11 +149,11 @@ const LastTask: React.FC = () => {
             {tasks.find(task => task.id === linkVisible)?.points}
           </div>
           {!tasksState[linkVisible].claimVisible && !tasksState[linkVisible].joinClicked ? (
-            <a href={tasks.find(task => task.id === linkVisible)?.link} onClick={(e) => handleJoinClick(tasks.find(task => task.id === linkVisible)!, e)}>join</a>
+            <a href={tasks.find(task => task.id === linkVisible)?.link} onClick={(e) => handleJoinClick(tasks.find(task => task.id === linkVisible)!, e)}>Join</a>
           ) : !tasksState[linkVisible].claimVisible && tasksState[linkVisible].waitMessage ? (
-            <p>You can collect the coin from here after one hour .</p>
+            <p>You can collect the coin from here after one hour.</p>
           ) : tasksState[linkVisible].claimVisible ? (
-            <button type="button" className="btn">claim Now</button>
+            <button type="button" className="btn" >Claimed</button>
           ) : null}
         </div>
       )}
