@@ -65,7 +65,10 @@
     outline: none;
     cursor: pointer;
   }
-
+.form-popup p {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
   @media (width < 600px) {
     .form-popup {
         margin: auto;

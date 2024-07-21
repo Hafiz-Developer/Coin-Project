@@ -134,6 +134,9 @@
     justify-content: space-between;
     user-select: none;
 }
+.ahmad{
+    background-color: red;
+}
 .lastTask :is(.lastTask_Click , .lastTask_first, .lastTask_insideText){
     display: flex;
     align-items: center;

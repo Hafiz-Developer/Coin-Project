@@ -10,14 +10,33 @@ interface FloatingText {
 
 const Mid = () => {
   const maxEnergy = 2000;
-  const [value, setValue] = useState(0);
+
+  // Initialize state with the sum of totalCoins and totalCoins2 from localStorage
+  const [value, setValue] = useState(() => {
+    const storedTotalCoins = localStorage.getItem('totalCoins');
+    const storedTotalCoins2 = localStorage.getItem('totalCoins2');
+    const totalCoins = storedTotalCoins !== null ? parseInt(storedTotalCoins, 10) : 0;
+    const totalCoins2 = storedTotalCoins2 !== null ? parseInt(storedTotalCoins2, 10) : 0;
+    return totalCoins + totalCoins2;
+  });
+
   const [energy, setEnergy] = useState(maxEnergy);
   const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
   const [nextId, setNextId] = useState(0);
 
   const handleClick = (e: any) => {
     if (energy > 0) {
-      setValue((prev) => prev + 1);
+      setValue((prev) => {
+        const newValue = prev + 1;
+        // Update both totalCoins and totalCoins2 in localStorage
+        const storedTotalCoins = localStorage.getItem('totalCoins');
+        const storedTotalCoins2 = localStorage.getItem('totalCoins2');
+        const totalCoins = storedTotalCoins !== null ? parseInt(storedTotalCoins, 10) : 0;
+        const totalCoins2 = storedTotalCoins2 !== null ? parseInt(storedTotalCoins2, 10) : 0;
+        localStorage.setItem('totalCoins', totalCoins.toString());
+        localStorage.setItem('totalCoins2', totalCoins2.toString());
+        return newValue;
+      });
       setEnergy((prev) => (prev > 0 ? prev - 1 : 0));
 
       const { clientX: x, clientY: y } = e;
@@ -53,7 +72,7 @@ const Mid = () => {
       <div className="MidData">
         <div className="TotalCoins">
           <img src={textImage} alt="" />
-          {value.toLocaleString()}
+          {value}
         </div>
         <div className="MidImgCoin">
           <img
