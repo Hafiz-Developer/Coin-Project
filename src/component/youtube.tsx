@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import YoutubeImage from "../assets/images/youtubeLogo.png";
 import textImage from "../assets/images/textImage.png";
 import { IoIosArrowForward } from "react-icons/io";
