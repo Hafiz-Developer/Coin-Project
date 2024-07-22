@@ -15,9 +15,11 @@ const Mid = () => {
   const [value, setValue] = useState(() => {
     const storedTotalCoins = localStorage.getItem('totalCoins');
     const storedTotalCoins2 = localStorage.getItem('totalCoins2');
+    const storedTotalCoins3 = localStorage.getItem('totalCoins3');
     const totalCoins = storedTotalCoins !== null ? parseInt(storedTotalCoins, 10) : 0;
     const totalCoins2 = storedTotalCoins2 !== null ? parseInt(storedTotalCoins2, 10) : 0;
-    return totalCoins + totalCoins2;
+    const totalCoins3 = storedTotalCoins3 !== null ? parseInt(storedTotalCoins3, 10) : 0;
+    return totalCoins + totalCoins2 + totalCoins3;
   });
 
   const [energy, setEnergy] = useState(maxEnergy);
@@ -31,10 +33,13 @@ const Mid = () => {
         // Update both totalCoins and totalCoins2 in localStorage
         const storedTotalCoins = localStorage.getItem('totalCoins');
         const storedTotalCoins2 = localStorage.getItem('totalCoins2');
+        const storedTotalCoins3 = localStorage.getItem('totalCoins3');
         const totalCoins = storedTotalCoins !== null ? parseInt(storedTotalCoins, 10) : 0;
         const totalCoins2 = storedTotalCoins2 !== null ? parseInt(storedTotalCoins2, 10) : 0;
+        const totalCoins3 = storedTotalCoins3 !== null ? parseInt(storedTotalCoins3, 10) : 0;
         localStorage.setItem('totalCoins', totalCoins.toString());
         localStorage.setItem('totalCoins2', totalCoins2.toString());
+        localStorage.setItem('totalCoins3', totalCoins3.toString());
         return newValue;
       });
       setEnergy((prev) => (prev > 0 ? prev - 1 : 0));
