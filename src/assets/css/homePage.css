@@ -3,6 +3,7 @@
         background: linear-gradient(to top, var(--dark-main-container-liner-1), var(--dark-main-container-liner-2));
         height: 100dvh;
         width: 70rem;
+        /* position: relative; */
         /* overflow: hidden; */
     }
     .homeMain{
@@ -10,7 +11,7 @@
         padding-bottom: 4rem;
         display: flex;
         flex-flow: column;
-        justify-content: space-between;
+        justify-content: space-around;
     }
     .navBarButton {
         display: flex;
@@ -67,8 +68,9 @@
     }
     
     .MidData .MidImgCoin img {
-        width: 70%;
+        width: 100%;
         cursor: pointer;
+        user-select: none;
     }
     @keyframes floatUp {
         0% {
@@ -101,7 +103,7 @@
     .energy {
         width: 100%;
         position: relative;
-        margin-block: 3rem 0rem;
+        margin-block: 1rem 0rem;
     }
 
     .energy .energyText {
@@ -142,13 +144,25 @@
     }
 
     .footerBtn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 70rem;
+        margin-inline:auto ;
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background-color: var(	--dark-mode-footer-bg);
-        width: 100%;
+        /* width: 100%; */
         border-radius: 0.5rem;
         padding: 1.5rem 1.5rem;
+    }
+    @media (width < 700px) {
+        .footerBtn {
+
+width: 100%;
+        }
     }
 
     .footerBtn button {
@@ -191,10 +205,7 @@
 
 @media (max-width : 500px) {
 
-    .MidData .MidImgCoin img {
-        width: 80%;
-        cursor: pointer;
-    }
+
 
     .footerBtn button {
         font-size: 1rem;
@@ -213,9 +224,7 @@
         margin-top: 2rem;
     }
 
-    .MidData .MidImgCoin {
-        margin-block: 3rem;
-    }
+ 
     .footerBtn {
         padding: 2rem 2rem;
         flex-wrap: wrap;

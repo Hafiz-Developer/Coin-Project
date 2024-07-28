@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Coin from "../assets/images/puma.png";
+import Coin from "../assets/images/puma.ico";
 import textImage from "../assets/images/textImage.png";
 
 interface FloatingText {
