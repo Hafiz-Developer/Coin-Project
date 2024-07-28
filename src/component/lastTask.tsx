@@ -9,7 +9,8 @@ import QuoraTaskList from "../assets/images/QuoraTaskList.png";
 import { IoCloseCircle } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
-import { CiNoWaitingSign } from "react-icons/ci"; 
+import loader from '../assets/images/VAyR.gif';
+
 import "../assets/css/popup.css";
 
 // Define a type for tasks
@@ -187,7 +188,7 @@ const LastTask: React.FC = () => {
               {tasksState[task.id]?.claimVisible ? (
                 <TiTick className="tick" />
               ) : tasksState[task.id]?.waitMessage ? (
-                <CiNoWaitingSign />
+                <img src={loader} alt="" width={20} />
               ) : (
                 <IoIosArrowForward />
               )}

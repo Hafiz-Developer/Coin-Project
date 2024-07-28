@@ -4,6 +4,7 @@ import textImage from "../assets/images/textImage.png";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { IoCloseCircle } from "react-icons/io5";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../assets/css/popup.css";
