@@ -159,8 +159,9 @@ const LastTask: React.FC = () => {
   };
 
   const handleClaimClick = (taskId: number, points: string) => {
-    toast.info(`You have already collected the coin. ${points}`);
-  };
+    toast.info(`You have already collected the coin for task ${taskId}. Points: ${points}`);
+};
+
 
   return (
     <>
