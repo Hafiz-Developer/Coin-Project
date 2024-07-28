@@ -10,7 +10,6 @@ import { IoCloseCircle } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import loader from '../assets/images/VAyR.gif';
-
 import "../assets/css/popup.css";
 
 // Define a type for tasks
@@ -22,6 +21,16 @@ interface Task {
   link?: string;  // Ensure link is optional
 }
 
+const formatCoins = (value: number) => {
+  if (value >= 1000000) {
+    return (value / 1000000).toFixed(1) + 'm';
+  } else if (value >= 1000) {
+    return (value / 1000).toFixed(1) + 'k';
+  } else {
+    return value.toString();
+  }
+};
+
 const LastTask: React.FC = () => {
   const [linkVisible, setLinkVisible] = useState<number | null>(null);
   const [tasksState, setTasksState] = useState<Record<number, { joinClicked: boolean; waitMessage: boolean; claimVisible: boolean; coinsAdded: boolean }>>({});
@@ -30,28 +39,28 @@ const LastTask: React.FC = () => {
   const tasks: Task[] = [
     {
       id: 1,
-      points: "+1000",
+      points: "+100000",
       title: "Join Telegram Group",
       img: telegramTaskList,
       link: " https://t.me/pumapunch"
     },
     {
       id: 2,
-      points: "+1000",
+      points: "+100000",
       title: "Subscribe Youtube",
       img: youtubeTaskLisk,
       link: "https://youtube.com/@pumapunchgame"
     },
     {
       id: 3,
-      points: "+1000",
+      points: "+100000",
       title: "Join Whatsapp Group",
       img: WhatsapptaskList,
       link: " https://whatsapp.com/channel/0029VafEfMZLtOjJNcWbyp2E"
     },
     {
       id: 4,
-      points: "+1000",
+      points: "+100000",
       title: "Follow Quora",
       img: QuoraTaskList,
       link: " https://pumapunch.quora.com/?ch=10&oid=6259170&share=396067ef&srid=u8UzBq&target_type=tribe"
@@ -160,7 +169,7 @@ const LastTask: React.FC = () => {
   };
 
   const handleClaimClick = (taskId: number, points: string) => {
-    toast.info(`You have already collected the coin for task ${taskId}. Points: ${points}`);
+    toast.info(`You have already collected the coin for task ${taskId}. Points: ${formatCoins(parseInt(points.replace(/[^0-9]/g, '') || '0'))}`);
 };
 
 
@@ -171,7 +180,7 @@ const LastTask: React.FC = () => {
         <h1>Tasks List</h1>
         <h2 style={{
           display: 'none'
-        }}>Total Coins: {totalCoins.toLocaleString()}</h2>
+        }}>Total Coins: {formatCoins(totalCoins)}</h2>
         {tasks.map(task => (
           <div key={task.id} className={`lastTask_Click ${tasksState[task.id]?.claimVisible ? "ahmad" : ""}`}>
             <div className="lastTask_first">
@@ -180,7 +189,7 @@ const LastTask: React.FC = () => {
                 <h1>{task.title}</h1>
                 <div className="lastTask_insideText">
                   <img src={textImage} alt="" />
-                  {task.points}
+                  {formatCoins(parseInt(task.points.replace(/[^0-9]/g, '') || '0'))}
                 </div>
               </div>
             </div>
@@ -203,7 +212,7 @@ const LastTask: React.FC = () => {
           <h1>{tasks.find(task => task.id === linkVisible)?.title}</h1>
           <div className="smallImageCoin">
             <img src={textImage} alt="" />
-            {tasks.find(task => task.id === linkVisible)?.points}
+            {formatCoins(parseInt(tasks.find(task => task.id === linkVisible)?.points.replace(/[^0-9]/g, '') || '0'))}
           </div>
           {!tasksState[linkVisible].claimVisible && !tasksState[linkVisible].joinClicked ? (
             <a href={tasks.find(task => task.id === linkVisible)?.link} onClick={(e) => handleJoinClick(tasks.find(task => task.id === linkVisible)!, e)}>Join</a>
@@ -221,4 +230,3 @@ const LastTask: React.FC = () => {
 };
 
 export default LastTask;
-``

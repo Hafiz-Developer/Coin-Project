@@ -18,15 +18,15 @@ interface Day {
 const DailyTask: React.FC = () => {
   const days: Day[] = [
     { id: 1, day: "day1", coin: 500 },
-    { id: 2, day: "day2", coin: 600 },
-    { id: 3, day: "day3", coin: 700 },
-    { id: 4, day: "day4", coin: 800 },
-    { id: 5, day: "day5", coin: 900 },
-    { id: 6, day: "day6", coin: 1000 },
-    { id: 7, day: "day7", coin: 1200 },
-    { id: 8, day: "day8", coin: 1300 },
-    { id: 9, day: "day9", coin: 1400 },
-    { id: 10, day: "day10", coin: 1500 },
+    { id: 2, day: "day2", coin: 1000 },
+    { id: 3, day: "day3", coin: 15000 },
+    { id: 4, day: "day4", coin: 25000 },
+    { id: 5, day: "day5", coin: 50000 },
+    { id: 6, day: "day6", coin: 100000 },
+    { id: 7, day: "day7", coin: 500000 },
+    { id: 8, day: "day8", coin: 1000000 },
+    { id: 9, day: "day9", coin: 5000000 },
+    { id: 10, day: "day10", coin: 10000000 },
   ];
 
   const [state, setState] = useState(false);
@@ -118,6 +118,16 @@ const DailyTask: React.FC = () => {
     }
   };
 
+  const formatCoins = (coin:any) => {
+    if (coin >= 1000000) {
+      return (coin / 1000000).toFixed(1) + 'm';
+    } else if (coin >= 1000) {
+      return (coin / 1000).toFixed(1) + 'k';
+    } else {
+      return coin;
+    }
+  };
+
   return (
     <>
       <ToastContainer />
@@ -130,7 +140,7 @@ const DailyTask: React.FC = () => {
               <h1>the trend you can't ignore</h1>
               <div className="DailyTask_insideText">
                 <img src={textImage} alt="" />
-                +{totalCoinsCollected.toLocaleString()} {/* Display total coins collected */}
+                +{formatCoins(totalCoinsCollected)} {/* Display total coins collected */}
               </div>
             </div>
           </div>
@@ -156,7 +166,7 @@ const DailyTask: React.FC = () => {
               >
                 <h1>{day.day}</h1>
                 <img src={textImage} alt="" />
-                <h2>{day.coin}</h2>
+                <h2>{formatCoins(day.coin)}</h2> 
               </div>
             ))}
           </div>
