@@ -6,7 +6,7 @@ import textImage from "../assets/images/textImage.png";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
-import { CiNoWaitingSign } from "react-icons/ci";
+import loader from '../assets/images/VAyR.gif';
 import "../assets/css/popup.css";
 
 interface fetchDatas {
@@ -17,7 +17,7 @@ interface fetchDatas {
 }
 
 const Youtube = () => {
-  const POINTS = 3000; 
+  const POINTS = 20000; 
   const [formVisible, setFormVisible] = useState(false);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [data, setData] = useState<fetchDatas[]>([]);
@@ -51,7 +51,7 @@ const Youtube = () => {
         const coinsAddedYoutube = localStorage.getItem(`coinsAddedYoutube-${task.id}`) === 'true';
         const joinTimestampYoutube = localStorage.getItem(`joinTimestampYoutube-${task.id}`);
         const timePassedYoutube = joinTimestampYoutube ? Date.now() - parseInt(joinTimestampYoutube, 10) : 0;
-        const timeLeftYoutube = 3000 - timePassedYoutube; // 1 hour in milliseconds
+        const timeLeftYoutube = 3600000 - timePassedYoutube; // 1 hour in milliseconds
 
         acc[task.id] = {
           joinClickedYoutube,
@@ -73,7 +73,7 @@ const Youtube = () => {
         const joinTimestampYoutube = localStorage.getItem(`joinTimestampYoutube-${task.id}`);
         if (joinTimestampYoutube) {
           const timePassedYoutube = Date.now() - parseInt(joinTimestampYoutube, 10);
-          if (timePassedYoutube >= 3000 && !taskStates[task.id]?.coinsAddedYoutube) {
+          if (timePassedYoutube >= 3600000 && !taskStates[task.id]?.coinsAddedYoutube) {
             acc[task.id] = {
               ...taskStates[task.id],
               waitMessage: false,
@@ -152,7 +152,7 @@ const Youtube = () => {
               {taskStates[dataAll.id]?.claimVisibleYoutube ? (
                 <TiTick className="tick" />
               ) : taskStates[dataAll.id]?.waitMessage ? (
-                <CiNoWaitingSign />
+              <img src={loader} alt="" width={20} />
               ) : (
                 <IoIosArrowForward />
               )}

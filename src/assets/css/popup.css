@@ -130,10 +130,9 @@ font-style: oblique;
       padding: 0.7rem 2rem;
     }
     .form-popup {
-      height: calc(100dvh - 30dvh);
       width: 100dvw;
         margin: auto;
-        height: calc(100dvh - 40dvh);
+        height: calc(100dvh - 50dvh);
         z-index: 9;
       }
       .boxFlex img{

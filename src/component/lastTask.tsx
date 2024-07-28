@@ -69,7 +69,7 @@ const LastTask: React.FC = () => {
       const coinsAdded = localStorage.getItem(`coinsAdded-${task.id}`) === 'true';
       const joinTimestamp = localStorage.getItem(`joinTimestamp-${task.id}`);
       const timePassed = joinTimestamp ? Date.now() - parseInt(joinTimestamp, 10) : 0;
-      const timeLeft = 4000  - timePassed; // 6 seconds in milliseconds
+      const timeLeft = 3600000  - timePassed; // 6 seconds in milliseconds
 
       acc[task.id] = {
         joinClicked,
@@ -99,7 +99,7 @@ const LastTask: React.FC = () => {
         const joinTimestamp = localStorage.getItem(`joinTimestamp-${task.id}`);
         if (joinTimestamp) {
           const timePassed = Date.now() - parseInt(joinTimestamp, 10);
-          if (timePassed >= 4000  && !tasksState[task.id]?.coinsAdded) {
+          if (timePassed >= 3600000  && !tasksState[task.id]?.coinsAdded) {
             acc[task.id] = {
               ...tasksState[task.id],
               waitMessage: false,
@@ -207,7 +207,7 @@ const LastTask: React.FC = () => {
           {!tasksState[linkVisible].claimVisible && !tasksState[linkVisible].joinClicked ? (
             <a href={tasks.find(task => task.id === linkVisible)?.link} onClick={(e) => handleJoinClick(tasks.find(task => task.id === linkVisible)!, e)}>Join</a>
           ) : !tasksState[linkVisible].claimVisible && tasksState[linkVisible].waitMessage ? (
-            <p>You can collect the coin from here after one hour.</p>
+            <p>You can collect the coin from here after 1 hour.</p>
           ) : tasksState[linkVisible].claimVisible ? (
             <>
               <button type="button" className="btn" onClick={() => handleClaimClick(linkVisible, tasks.find(task => task.id === linkVisible)?.points || '')}>Claimed</button>
