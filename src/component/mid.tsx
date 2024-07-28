@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Coin from "../assets/images/coin.ico";
+import Coin from "../assets/images/puma.png";
 import textImage from "../assets/images/textImage.png";
 
 interface FloatingText {
@@ -11,15 +11,10 @@ interface FloatingText {
 const Mid = () => {
   const maxEnergy = 2000;
 
-  // Initialize state with the sum of totalCoins and totalCoins2 from localStorage
+  // Initialize state with value from localStorage or default to 0
   const [value, setValue] = useState(() => {
-    const storedTotalCoins = localStorage.getItem('totalCoins');
-    const storedTotalCoins2 = localStorage.getItem('totalCoins2');
-    const storedTotalCoins3 = localStorage.getItem('totalCoins3');
-    const totalCoins = storedTotalCoins !== null ? parseInt(storedTotalCoins, 10) : 0;
-    const totalCoins2 = storedTotalCoins2 !== null ? parseInt(storedTotalCoins2, 10) : 0;
-    const totalCoins3 = storedTotalCoins3 !== null ? parseInt(storedTotalCoins3, 10) : 0;
-    return totalCoins + totalCoins2 + totalCoins3;
+    const storedCoinValue = localStorage.getItem('coinValue');
+    return storedCoinValue !== null ? parseInt(storedCoinValue, 10) : 0;
   });
 
   const [energy, setEnergy] = useState(maxEnergy);
@@ -30,18 +25,25 @@ const Mid = () => {
     if (energy > 0) {
       setValue((prev) => {
         const newValue = prev + 1;
-        // Update both totalCoins and totalCoins2 in localStorage
-        const storedTotalCoins = localStorage.getItem('totalCoins');
-        const storedTotalCoins2 = localStorage.getItem('totalCoins2');
-        const storedTotalCoins3 = localStorage.getItem('totalCoins3');
-        const totalCoins = storedTotalCoins !== null ? parseInt(storedTotalCoins, 10) : 0;
-        const totalCoins2 = storedTotalCoins2 !== null ? parseInt(storedTotalCoins2, 10) : 0;
-        const totalCoins3 = storedTotalCoins3 !== null ? parseInt(storedTotalCoins3, 10) : 0;
-        localStorage.setItem('totalCoins', totalCoins.toString());
-        localStorage.setItem('totalCoins2', totalCoins2.toString());
-        localStorage.setItem('totalCoins3', totalCoins3.toString());
+
+        // Retrieve existing values from localStorage
+        const totalCoinsTaskList = localStorage.getItem('totalCoinsTaskList') ?? '0';
+        const totalCoinsYoutube = localStorage.getItem('totalCoinsYoutube') ?? '0';
+        const totalCoinsDailyRewards = localStorage.getItem('totalCoinsDailyRewards') ?? '0';
+
+        // Calculate the total coins
+        const totalAllCoins = parseInt(totalCoinsTaskList, 10) +
+                              parseInt(totalCoinsYoutube, 10) +
+                              parseInt(totalCoinsDailyRewards, 10) +
+                              newValue;
+
+        // Update localStorage with the new values
+        localStorage.setItem('coinValue', newValue.toString());
+        localStorage.setItem('totalAllCoins', totalAllCoins.toString());
+
         return newValue;
       });
+
       setEnergy((prev) => (prev > 0 ? prev - 1 : 0));
 
       const { clientX: x, clientY: y } = e;
@@ -72,12 +74,18 @@ const Mid = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Calculate total coins for display
+  const totalCoinsTaskList = parseInt(localStorage.getItem('totalCoinsTaskList') ?? '0', 10);
+  const totalCoinsYoutube = parseInt(localStorage.getItem('totalCoinsYoutube') ?? '0', 10);
+  const totalCoinsDailyRewards = parseInt(localStorage.getItem('totalCoinsDailyRewards') ?? '0', 10);
+  const totalAllCoins = totalCoinsTaskList + totalCoinsYoutube + totalCoinsDailyRewards + value;
+
   return (
     <>
       <div className="MidData">
         <div className="TotalCoins">
           <img src={textImage} alt="" />
-          {value}
+          {totalAllCoins}
         </div>
         <div className="MidImgCoin">
           <img

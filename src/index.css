@@ -9,15 +9,34 @@
 html {
 	font-size: 62.5%;
 }
-
+:root{
+	--dark-mode-bg: rgba(0, 0, 0, 0.292);
+	--dark-mode-text: #fff;
+	--dark-main-container-liner-1: #152026;  
+	--dark-main-container-liner-2: #18191B;  
+	--dark-mode-nav-bg: #353a3d49;
+	--dark-mode-yellow: #FDB224;
+	--dark-mode-percent-bg : #012237; 
+	--dark-mode-percent-bg-linear-1: #dc7b0c;
+	--dark-mode-percent-bg-linear-2: #fff973 ;
+	--dark-mode-footer-bg: #161D22 ;
+	--dark-mode-footer-btn-text: #949499 ;
+	--dark-mode-footer-bg-active: #3636367e ;
+	--dark-mode-footer-active-text-clr:  rgba(255, 255, 255, 0.86)  ;
+	--dark-mode-form-popup-bg: #171A1D;
+	--dark-mode-form-popup-btn-bg: rgba(255, 255, 255, 0.2);
+	--dark-mode-click-bg: #27292cb8;
+	--dark-mode-coin-collect: rgba(0, 0, 0, 0.17);
+	--dark-mode-icon-tick: 	#22bb33;
+} 
 body {
 	width: 100vw;
 	height: 100dvh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #fff;
-	background-color: #121212;
+	color: var(--dark-mode-text);
+	background-color: var(--dark-mode-bg);
 }
 
 .no-select {

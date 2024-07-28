@@ -1,142 +1,188 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import YoutubeImage from "../assets/images/youtubeLogo.png";
 import textImage from "../assets/images/textImage.png";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
-import { CiNoWaitingSign } from "react-icons/ci";
 import { TiTick } from "react-icons/ti";
+import { CiNoWaitingSign } from "react-icons/ci";
 import "../assets/css/popup.css";
 
-const Youtube = () => {
-  const [formVisible, setFormVisible] = useState(false);
-  const [joinClicked, setJoinClicked] = useState(false);
-  const [waitMessage, setWaitMessage] = useState(false);
-  const [claimVisible, setClaimVisible] = useState(false);
-  const [totalCoins2, setTotalCoins2] = useState(0);
-  const [coinCollected, setCoinCollected] = useState(false);
+interface fetchDatas {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+}
 
-  const taskId = 'youtube-task';
-  const points = 100000;
+const Youtube = () => {
+  const POINTS = 3000; 
+  const [formVisible, setFormVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [data, setData] = useState<fetchDatas[]>([]);
+  const [totalCoinsYoutube, setTotalCoinsYoutube] = useState<number>(0);
+  const [taskStates, setTaskStates] = useState<Record<number, { joinClickedYoutube: boolean; waitMessage: boolean; claimVisibleYoutube: boolean; coinsAddedYoutube: boolean }>>({});
+
+  const openForm = (id: number) => {
+    setSelectedId(id);
+    setFormVisible(true);
+  };
+
+  const closeForm = () => {
+    setSelectedId(null);
+    setFormVisible(false);
+  };
 
   useEffect(() => {
-    const savedTotalCoins2 = localStorage.getItem('totalCoins2');
-    if (savedTotalCoins2) {
-      setTotalCoins2(parseInt(savedTotalCoins2, 10));
-    }
+    const fetchData = async () => {
+      const url = await fetch(`http://localhost:3800/api/lead/list`);
+      const res = await url.json();
+      setData(res.result);
 
-    const joinClicked = localStorage.getItem(`joinClicked-${taskId}`) === 'true';
-    const joinTimestamp = localStorage.getItem(`joinTimestamp-${taskId}`);
-    const claimVisible = localStorage.getItem(`claimVisible-${taskId}`) === 'true';
-    const coinCollected = localStorage.getItem(`coinCollected-${taskId}`) === 'true';
-
-    setCoinCollected(coinCollected);
-
-    if (joinClicked && joinTimestamp) {
-      const timePassed = Date.now() - parseInt(joinTimestamp, 10);
-      const timeLeft4Sec = 4000 - timePassed; // 4 seconds
-      const timeLeft6Sec = 6000 - timePassed; // 6 seconds
-
-      setJoinClicked(true);
-      setWaitMessage(timeLeft4Sec > 0);
-      setClaimVisible(timeLeft6Sec <= 0);
-
-      if (timeLeft4Sec > 0) {
-        const timerId4Sec = setTimeout(() => {
-          setWaitMessage(false);
-        }, timeLeft4Sec);
-
-        const timerId6Sec = setTimeout(() => {
-          setClaimVisible(true);
-          localStorage.setItem(`claimVisible-${taskId}`, 'true');
-        }, timeLeft6Sec);
-
-        return () => {
-          clearTimeout(timerId4Sec);
-          clearTimeout(timerId6Sec);
-        };
+      const savedTotalCoinsYoutube = localStorage.getItem('totalCoinsYoutube');
+      if (savedTotalCoinsYoutube) {
+        setTotalCoinsYoutube(parseInt(savedTotalCoinsYoutube, 10));
       }
-    } else {
-      setJoinClicked(joinClicked);
-      setClaimVisible(claimVisible);
-    }
+
+      const storedState = res.result.reduce((acc: any, task: fetchDatas) => {
+        const joinClickedYoutube = localStorage.getItem(`joinClickedYoutube-${task.id}`) === 'true';
+        const claimVisibleYoutube = localStorage.getItem(`claimVisibleYoutube-${task.id}`) === 'true';
+        const coinsAddedYoutube = localStorage.getItem(`coinsAddedYoutube-${task.id}`) === 'true';
+        const joinTimestampYoutube = localStorage.getItem(`joinTimestampYoutube-${task.id}`);
+        const timePassedYoutube = joinTimestampYoutube ? Date.now() - parseInt(joinTimestampYoutube, 10) : 0;
+        const timeLeftYoutube = 3000 - timePassedYoutube; // 1 hour in milliseconds
+
+        acc[task.id] = {
+          joinClickedYoutube,
+          waitMessage: joinClickedYoutube && timeLeftYoutube > 0,
+          claimVisibleYoutube: claimVisibleYoutube || (joinClickedYoutube && timeLeftYoutube <= 0),
+          coinsAddedYoutube,
+        };
+        return acc;
+      }, {});
+
+      setTaskStates(storedState);
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {
-    if (claimVisible) {
-      const updatedTotalCoins2 = totalCoins2 + points;
-      setTotalCoins2(updatedTotalCoins2);
-      localStorage.setItem('totalCoins2', updatedTotalCoins2.toString());
-      console.log(`Coins added: ${points}. Total Coins: ${updatedTotalCoins2}`);
-      localStorage.setItem(`coinCollected-${taskId}`, 'true');
-      setCoinCollected(true);
-      localStorage.removeItem(`joinClicked-${taskId}`);
-      localStorage.removeItem(`joinTimestamp-${taskId}`);
-      localStorage.removeItem(`claimVisible-${taskId}`);
-    }
-  }, [claimVisible]);
+    const intervalId = setInterval(() => {
+      const newState = data.reduce((acc: any, task: fetchDatas) => {
+        const joinTimestampYoutube = localStorage.getItem(`joinTimestampYoutube-${task.id}`);
+        if (joinTimestampYoutube) {
+          const timePassedYoutube = Date.now() - parseInt(joinTimestampYoutube, 10);
+          if (timePassedYoutube >= 3000 && !taskStates[task.id]?.coinsAddedYoutube) {
+            acc[task.id] = {
+              ...taskStates[task.id],
+              waitMessage: false,
+              claimVisibleYoutube: true,
+              coinsAddedYoutube: true,
+            };
+            localStorage.setItem(`claimVisibleYoutube-${task.id}`, 'true');
+            localStorage.setItem(`coinsAddedYoutube-${task.id}`, 'true');
+          }
+        }
+        return acc;
+      }, {});
 
-  const openForm = () => {
-    if (!coinCollected) {
-      setFormVisible(true);
-    }
+      if (Object.keys(newState).length > 0) {
+        setTaskStates((prevState) => ({
+          ...prevState,
+          ...newState,
+        }));
+
+        const total = Object.keys(newState).reduce((sum, taskId) => {
+          const { claimVisibleYoutube, coinsAddedYoutube } = newState[taskId] || {};
+          if (claimVisibleYoutube && coinsAddedYoutube) {
+            return sum + POINTS; // Use the points constant
+          }
+          return sum;
+        }, totalCoinsYoutube);
+
+        setTotalCoinsYoutube(total);
+
+        localStorage.setItem('totalCoinsYoutube', total.toString());
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [data, taskStates, totalCoinsYoutube]);
+
+  const handleJoinClickYoutube = (task: fetchDatas, e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setTaskStates((prevState) => {
+      const newState = { ...prevState };
+      newState[task.id] = { ...newState[task.id], joinClickedYoutube: true, waitMessage: true };
+      return newState;
+    });
+
+    localStorage.setItem(`joinClickedYoutube-${task.id}`, 'true');
+    localStorage.setItem(`joinTimestampYoutube-${task.id}`, Date.now().toString());
+
+    window.location.href = task.link || '#';
   };
 
-  const closeForm = () => setFormVisible(false);
-
-  const handleJoinClick = (e: any) => {
-    e.preventDefault();
-    setJoinClicked(true);
-    setWaitMessage(true);
-    localStorage.setItem(`joinClicked-${taskId}`, 'true');
-    localStorage.setItem(`joinTimestamp-${taskId}`, Date.now().toString());
-    window.location.href = "https://www.youtube.com";
+  const handleClaimClickYoutube = (taskId: number) => {
+    const task = data.find((t) => t.id === taskId);
+    if (task) {
+      toast.info(`You have already collected the coin. ${POINTS}`); // Use the points constant
+    }
   };
 
   return (
     <>
+      <ToastContainer />
       <div className="youtube">
         <h1>Hamster Youtube</h1>
-        <div className="youtubeClick">
-          <div className="first">
-            <img src={YoutubeImage} alt="Hamster Youtube" />
-            <div className="textYoutube">
-              <h1>the trend you can't ignore</h1>
-              <div className="insideText">
-                <img src={textImage} alt="" />
-                +100,000
+        {data.map((dataAll) => (
+          <div className={`youtubeClick ${taskStates[dataAll.id]?.claimVisibleYoutube ? "ahmad" : ""}`} key={dataAll.id}>
+            <div className="first">
+              <img src={YoutubeImage} alt="Hamster Youtube" />
+              <div className="textYoutube">
+                <h1>{dataAll.title}</h1>
+                <div className="insideText">
+                  <img src={textImage} alt="" />
+                  +{POINTS} 
+                </div>
               </div>
             </div>
+            <div className="second" onClick={() => openForm(dataAll.id)}>
+              {taskStates[dataAll.id]?.claimVisibleYoutube ? (
+                <TiTick className="tick" />
+              ) : taskStates[dataAll.id]?.waitMessage ? (
+                <CiNoWaitingSign />
+              ) : (
+                <IoIosArrowForward />
+              )}
+            </div>
           </div>
-          <div className="second" onClick={openForm}>
-            {!joinClicked ? (
-              <IoIosArrowForward />
-            ) : !claimVisible && waitMessage ? (
-              <CiNoWaitingSign />
-            ) : claimVisible ? (
-              <TiTick />
-            ) : null}
-          </div>
-        </div>
+        ))}
       </div>
 
-      {formVisible && (
+      {formVisible && selectedId !== null && (
         <div className="form-popup">
           <IoCloseCircle className="close" onClick={closeForm} />
           <img src={YoutubeImage} alt="Hamster Youtube" />
-          <h1>the trend you can't ignore</h1>
-          <div className="smallImageCoin">
-            <img src={textImage} alt="" />
-            +100,000
-          </div>
-          {!claimVisible && !joinClicked ? (
-            <a href="https://www.youtube.com" onClick={handleJoinClick}>Join</a>
-          ) : !claimVisible && waitMessage ? (
-            <p>You can collect the coin from here after one hour.</p>
-          ) : claimVisible ? (
-            <button type="button" className="btn" onClick={() => setFormVisible(false)}>
-              Claimed
-            </button>
-          ) : null}
+          {data
+            .filter((dataAll) => dataAll.id === selectedId)
+            .map((filteredData) => (
+              <div key={filteredData.id} className="youtubeDivInside">
+                <h1>{filteredData.title}</h1>
+                <div className="smallImageCoin">
+                  <img src={textImage} alt="" />
+                  +{POINTS} {/* Use the points constant */}
+                </div>
+                {!taskStates[selectedId]?.claimVisibleYoutube && !taskStates[selectedId]?.joinClickedYoutube ? (
+                  <a href={filteredData.link} onClick={(e) => handleJoinClickYoutube(filteredData, e)}>Join</a>
+                ) : !taskStates[selectedId]?.claimVisibleYoutube && taskStates[selectedId]?.waitMessage ? (
+                  <p>You can collect the coin from here after one hour.</p>
+                ) : taskStates[selectedId]?.claimVisibleYoutube ? (
+                  <button type="button" className="btn" onClick={() => handleClaimClickYoutube(selectedId)}>Claimed</button>
+                ) : null}
+              </div>
+            ))}
         </div>
       )}
     </>

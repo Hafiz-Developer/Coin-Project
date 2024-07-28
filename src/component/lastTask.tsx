@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import facebook from "../assets/images/facebok.png";
+import { ToastContainer, toast } from 'react-toastify';
 import textImage from "../assets/images/textImage.png";
-import instagram from "../assets/images/instagram.png";
-import ticktok from "../assets/images/ticktok.png"; 
+import 'react-toastify/dist/ReactToastify.css';
+import telegramTaskList from "../assets/images/telegramTaskList.png";
+import youtubeTaskLisk from "../assets/images/youtubeTaskLisk.png";
+import WhatsapptaskList from "../assets/images/WhatsapptaskList.png";
+import QuoraTaskList from "../assets/images/QuoraTaskList.png"; 
 import { IoCloseCircle } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
@@ -26,31 +29,36 @@ const LastTask: React.FC = () => {
   const tasks: Task[] = [
     {
       id: 1,
-      points: "+100,000",
-      title: "Join Facebook Group",
-      img: facebook,
-      link: "https://www.facebook.com"
+      points: "+1000",
+      title: "Join Telegram Group",
+      img: telegramTaskList,
+      link: " https://t.me/pumapunch"
     },
     {
       id: 2,
-      points: "+150,000",
-      title: "Follow Instagram",
-      img: instagram,
-      link: "https://www.instagram.com"
+      points: "+1000",
+      title: "Subscribe Youtube",
+      img: youtubeTaskLisk,
+      link: "https://youtube.com/@pumapunchgame"
     },
     {
       id: 3,
-      points: "+200,000",
-      title: "Follow TikTok",
-      img: ticktok,
-      link: "https://www.tiktok.com"
+      points: "+1000",
+      title: "Join Whatsapp Group",
+      img: WhatsapptaskList,
+      link: " https://whatsapp.com/channel/0029VafEfMZLtOjJNcWbyp2E"
     },
-    // Add more tasks as needed
+    {
+      id: 4,
+      points: "+1000",
+      title: "Follow Quora",
+      img: QuoraTaskList,
+      link: " https://pumapunch.quora.com/?ch=10&oid=6259170&share=396067ef&srid=u8UzBq&target_type=tribe"
+    },
   ];
 
   useEffect(() => {
-    // Get initial totalCoins from local storage
-    const savedTotalCoins = localStorage.getItem('totalCoins');
+    const savedTotalCoins = localStorage.getItem('totalCoinsTaskList');
     if (savedTotalCoins) {
       setTotalCoins(parseInt(savedTotalCoins, 10));
     }
@@ -61,7 +69,7 @@ const LastTask: React.FC = () => {
       const coinsAdded = localStorage.getItem(`coinsAdded-${task.id}`) === 'true';
       const joinTimestamp = localStorage.getItem(`joinTimestamp-${task.id}`);
       const timePassed = joinTimestamp ? Date.now() - parseInt(joinTimestamp, 10) : 0;
-      const timeLeft = 6000 - timePassed; // 1 hour in milliseconds
+      const timeLeft = 4000  - timePassed; // 6 seconds in milliseconds
 
       acc[task.id] = {
         joinClicked,
@@ -74,27 +82,24 @@ const LastTask: React.FC = () => {
 
     setTasksState(storedStates);
 
-    // Calculate total coins based on completed tasks
     const total = tasks.reduce((sum, task) => {
       const { claimVisible, coinsAdded } = storedStates[task.id] || {};
       if (claimVisible && !coinsAdded) {
-        const points = parseInt(task.points.replace(/[^0-9]/g, '')); // Remove non-numeric characters
+        const points = parseInt(task.points.replace(/[^0-9]/g, '')); 
         return sum + points;
       }
       return sum;
     }, 0);
     setTotalCoins(total);
 
-    // Save totalCoins to local storage
-    localStorage.setItem('totalCoins', total.toString());
+    localStorage.setItem('totalCoinsTaskList', total.toString());
 
-    // Set up interval to check for time updates
     const intervalId = setInterval(() => {
       const newState = tasks.reduce((acc: any, task: any) => {
         const joinTimestamp = localStorage.getItem(`joinTimestamp-${task.id}`);
         if (joinTimestamp) {
           const timePassed = Date.now() - parseInt(joinTimestamp, 10);
-          if (timePassed >= 6000 && !tasksState[task.id]?.coinsAdded) {
+          if (timePassed >= 4000  && !tasksState[task.id]?.coinsAdded) {
             acc[task.id] = {
               ...tasksState[task.id],
               waitMessage: false,
@@ -114,7 +119,6 @@ const LastTask: React.FC = () => {
           ...newState
         }));
 
-        // Update total coins
         const total = tasks.reduce((sum, task) => {
           const { claimVisible, coinsAdded } = tasksState[task.id] || {};
           if (claimVisible && coinsAdded) {
@@ -125,12 +129,11 @@ const LastTask: React.FC = () => {
         }, 0);
         setTotalCoins(total);
 
-        // Save totalCoins to local storage
-        localStorage.setItem('totalCoins', total.toString());
+        localStorage.setItem('totalCoinsTaskList', total.toString());
       }
-    }, 10000); // Check every 10 seconds
+    }, 1000);
 
-    return () => clearInterval(intervalId); // Clean up interval on component unmount
+    return () => clearInterval(intervalId); 
   }, [tasks, tasksState]);
 
   const openCoin = (task: Task) => {
@@ -152,19 +155,23 @@ const LastTask: React.FC = () => {
     localStorage.setItem(`joinClicked-${task.id}`, 'true');
     localStorage.setItem(`joinTimestamp-${task.id}`, Date.now().toString());
 
-    // Navigate to the URL
     window.location.href = task.link || '#';
+  };
+
+  const handleClaimClick = (taskId: number, points: string) => {
+    toast.info(`You have already collected the coin. ${points}`);
   };
 
   return (
     <>
+      <ToastContainer />
       <div className="lastTask">
         <h1>Tasks List</h1>
         <h2 style={{
           display: 'none'
         }}>Total Coins: {totalCoins.toLocaleString()}</h2>
         {tasks.map(task => (
-          <div key={task.id} className={`lastTask_Click ${tasksState[task.id]?.coinsAdded ? 'ahmad' : ''}`}>
+          <div key={task.id} className={`lastTask_Click ${tasksState[task.id]?.claimVisible ? "ahmad" : ""}`}>
             <div className="lastTask_first">
               <img src={task.img} alt={task.title} />
               <div className="lastTask_text">
@@ -176,10 +183,10 @@ const LastTask: React.FC = () => {
               </div>
             </div>
             <div className="lastTask_second" onClick={() => openCoin(task)}>
-              {tasksState[task.id]?.waitMessage ? (
+              {tasksState[task.id]?.claimVisible ? (
+                <TiTick className="tick" />
+              ) : tasksState[task.id]?.waitMessage ? (
                 <CiNoWaitingSign />
-              ) : tasksState[task.id]?.coinsAdded ? (
-                <TiTick />
               ) : (
                 <IoIosArrowForward />
               )}
@@ -201,7 +208,9 @@ const LastTask: React.FC = () => {
           ) : !tasksState[linkVisible].claimVisible && tasksState[linkVisible].waitMessage ? (
             <p>You can collect the coin from here after one hour.</p>
           ) : tasksState[linkVisible].claimVisible ? (
-            <button type="button" className="btn">Claimed</button>
+            <>
+              <button type="button" className="btn" onClick={() => handleClaimClick(linkVisible, tasks.find(task => task.id === linkVisible)?.points || '')}>Claimed</button>
+            </>
           ) : null}
         </div>
       )}
@@ -210,3 +219,4 @@ const LastTask: React.FC = () => {
 };
 
 export default LastTask;
+``
