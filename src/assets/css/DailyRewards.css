@@ -149,8 +149,10 @@
 }
 
 .lastTask_first img{
-    width: 12%;
+    width: 16%;
     cursor: pointer;
+    position: relative;
+    top: 0.3rem;
 }
 .lastTask_insideText > img{
   width: 5%;

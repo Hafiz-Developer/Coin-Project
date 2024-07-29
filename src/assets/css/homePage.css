@@ -70,7 +70,7 @@
     .MidData .MidImgCoin img {
         width: 100%;
         cursor: pointer;
-        user-select: none;
+        user-select: none !important;
         margin-block: 3rem;
     }
     @keyframes floatUp {
@@ -87,6 +87,7 @@
     
     .coin-button {
         transition: transform 0.1s ease;
+        user-select: none !important;
     }
     
     .coin-button:active {
@@ -101,9 +102,14 @@
         color: var(--dark-mode-text);
         font-weight: 700;
     }
+    .energyMain{
+        position: relative;
+        width: 100%;
+    }
     .energy {
         width: 100%;
-        position: relative;
+        position: absolute;
+        inset: 0;
         margin-block: 2rem;
     }
 
@@ -113,22 +119,24 @@
         justify-content: space-between;
         font-size: 1rem;
     }
-
-    .energyText h2 {
+    .energyText h1 {
         text-transform: capitalize;
         font-weight: 400;
+        color: var(	--dark-mode-timer-text-color);
     }
 
-    .energyText span {
+
+    .energyText :is(span , h2)  {
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 2rem;
+        text-transform: capitalize;
     }
 
     .energy .percentage {
         margin-top: 1rem;
         position: relative;
         height: 1.6rem;
-        background-color: var(--dark-mode-percent-bg);
+        background-color: var(--dark-mode-footer-bg-active);
         --tw-border-opacity: 1;
         border-color: rgb(7 55 85 / var(--tw-border-opacity));
         border-width: 1px;

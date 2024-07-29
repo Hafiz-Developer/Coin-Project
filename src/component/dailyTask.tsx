@@ -4,7 +4,6 @@ import textImage from "../assets/images/textImage.png";
 import { IoIosArrowForward } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { IoCloseCircle } from "react-icons/io5";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../assets/css/popup.css";
@@ -128,6 +127,13 @@ const DailyTask: React.FC = () => {
     }
   };
 
+  const formatRemainingTime = (milliseconds: number) => {
+    const totalSeconds = Math.ceil(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    return `${hours}h ${minutes}m`;
+  };
+
   return (
     <>
       <ToastContainer />
@@ -176,7 +182,7 @@ const DailyTask: React.FC = () => {
             onClick={handleClaimNow} // Handle claim click
             disabled={remainingTime > 0} // Disable button if remainingTime > 0
           >
-            {remainingTime > 0 ? `Back to Tomorrow (${Math.ceil(remainingTime / 1000)}s)` : `Claim Now`}
+            {remainingTime > 0 ? `Back to this time (${formatRemainingTime(remainingTime)})` : `Claim Now`}
           </button>
         </div>
       )}

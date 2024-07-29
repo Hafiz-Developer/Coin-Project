@@ -28,6 +28,7 @@ html {
 	--dark-mode-click-bg: #27292cb8;
 	--dark-mode-coin-collect: rgba(0, 0, 0, 0.17);
 	--dark-mode-icon-tick: 	#22bb33;
+	--dark-mode-timer-text-color: rgb(234, 64, 64);
 } 
 body {
 	width: 100vw;
@@ -40,12 +41,14 @@ body {
 }
 
 .no-select {
-	-webkit-user-select: none;
-	/* Safari */
-	-moz-user-select: none;
-	/* Firefox */
-	-ms-user-select: none;
-	/* IE10+/Edge */
-	user-select: none;
-	/* Standard */
-}
+	-webkit-user-select: none; /* Chrome, Safari, Opera */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* Internet Explorer/Edge */
+	user-select: none;         /* Non-prefixed version, currently
+								  supported by Chrome, Edge, Opera and Firefox */
+  }
+  
+  .no-focus-outline:focus {
+	outline: none;
+  }
+  

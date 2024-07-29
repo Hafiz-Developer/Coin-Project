@@ -10,41 +10,54 @@ interface FloatingText {
 
 const Mid = () => {
   const maxEnergy = 2000;
+  const regenerationDelay = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
 
-  // Initialize state with value from localStorage or default to 0
   const [value, setValue] = useState(() => {
     const storedCoinValue = localStorage.getItem('coinValue');
     return storedCoinValue !== null ? parseInt(storedCoinValue, 10) : 0;
   });
 
-  const [energy, setEnergy] = useState(maxEnergy);
+  const [energy, setEnergy] = useState(() => {
+    const storedEnergy = localStorage.getItem('energy');
+    return storedEnergy !== null ? parseInt(storedEnergy, 10) : maxEnergy;
+  });
+
   const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
   const [nextId, setNextId] = useState(0);
+  const [lastTapTime, setLastTapTime] = useState(() => {
+    const storedLastTapTime = localStorage.getItem('lastTapTime');
+    return storedLastTapTime !== null ? parseInt(storedLastTapTime, 10) : Date.now();
+  });
+  const [countdown, setCountdown] = useState(() => {
+    const storedCountdown = localStorage.getItem('countdown');
+    return storedCountdown !== null ? parseInt(storedCountdown, 10) : regenerationDelay;
+  });
 
   const handleClick = (e: any) => {
     if (energy > 0) {
       setValue((prev) => {
         const newValue = prev + 1;
 
-        // Retrieve existing values from localStorage
         const totalCoinsTaskList = localStorage.getItem('totalCoinsTaskList') ?? '0';
         const totalCoinsYoutube = localStorage.getItem('totalCoinsYoutube') ?? '0';
         const totalCoinsDailyRewards = localStorage.getItem('totalCoinsDailyRewards') ?? '0';
 
-        // Calculate the total coins
         const totalAllCoins = parseInt(totalCoinsTaskList, 10) +
                               parseInt(totalCoinsYoutube, 10) +
                               parseInt(totalCoinsDailyRewards, 10) +
                               newValue;
 
-        // Update localStorage with the new values
         localStorage.setItem('coinValue', newValue.toString());
         localStorage.setItem('totalAllCoins', totalAllCoins.toString());
 
         return newValue;
       });
 
-      setEnergy((prev) => (prev > 0 ? prev - 1 : 0));
+      setEnergy((prev) => {
+        const newEnergy = prev > 0 ? prev - 1 : 0;
+        localStorage.setItem('energy', newEnergy.toString());
+        return newEnergy;
+      });
 
       const { clientX: x, clientY: y } = e;
       const newText: FloatingText = { id: nextId, x, y };
@@ -56,6 +69,15 @@ const Mid = () => {
           prev.filter((text) => text.id !== newText.id)
         );
       }, 2000);
+
+      const now = Date.now();
+      setLastTapTime(now);
+      localStorage.setItem('lastTapTime', now.toString());
+
+      if (energy === 1) {
+        setCountdown(regenerationDelay);
+        localStorage.setItem('countdown', regenerationDelay.toString());
+      }
     }
   };
 
@@ -63,18 +85,34 @@ const Mid = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setEnergy((prevEnergy) => {
-        if (prevEnergy < maxEnergy) {
-          return prevEnergy + 1;
+      const currentTime = Date.now();
+      const timeElapsed = currentTime - lastTapTime;
+
+      if (energy === 0 && countdown > 0) {
+        const newCountdown = regenerationDelay - timeElapsed;
+        if (newCountdown <= 0) {
+          setEnergy(maxEnergy);
+          localStorage.setItem('energy', maxEnergy.toString());
+          setCountdown(regenerationDelay);
+          localStorage.setItem('countdown', regenerationDelay.toString());
+        } else {
+          setCountdown(newCountdown);
+          localStorage.setItem('countdown', newCountdown.toString());
         }
-        return prevEnergy;
-      });
-    }, 1500);
+      }
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [lastTapTime, countdown, energy]);
 
-  // Calculate total coins for display
+  const formatTime = (milliseconds: number) => {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${hours}h ${minutes}m ${seconds}s`;
+  };
+
   const totalCoinsTaskList = parseInt(localStorage.getItem('totalCoinsTaskList') ?? '0', 10);
   const totalCoinsYoutube = parseInt(localStorage.getItem('totalCoinsYoutube') ?? '0', 10);
   const totalCoinsDailyRewards = parseInt(localStorage.getItem('totalCoinsDailyRewards') ?? '0', 10);
@@ -92,14 +130,21 @@ const Mid = () => {
             src={Coin}
             onClick={handleClick}
             onMouseDown={(e) => e.preventDefault()}
-            draggable={true}
-            className="coin-button no-select"
+            onDragStart={(e) => e.preventDefault()}
+            onSelect={(e) => e.preventDefault()}
+            draggable={false}
+            className="coin-button no-select no-focus-outline"
             alt="Puma"
           />
         </div>
+        <div className="energyMain">
         <div className="energy">
           <div className="energyText">
-            <h2>energy</h2>
+            {energy === 0 ? (
+              <h1>Time until energy refills: {formatTime(countdown)}</h1>
+            ) : (
+              <h2>energy</h2>
+            )}
             <span>
               {energy} / {maxEnergy}
             </span>
@@ -110,6 +155,7 @@ const Mid = () => {
               style={{ width: `${energyPercentage}%` }}
             ></div>
           </div>
+        </div>
         </div>
         {floatingTexts.map((text) => (
           <span
