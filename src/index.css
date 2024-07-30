@@ -31,6 +31,7 @@ html {
 	--dark-mode-timer-text-color: rgb(234, 64, 64);
 } 
 body {
+	 font-family: "Roboto Flex", sans-serif;
 	width: 100vw;
 	height: 100dvh;
 	display: flex;
