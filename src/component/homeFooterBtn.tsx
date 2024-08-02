@@ -45,8 +45,8 @@ const FooterBtn = () => {
           invite friends
         </button>
         <button
-          className={activation === "setting" ? "active" : ""}
-          onClick={() => handleClick("setting")}
+          className={activation === "wallet" ? "active" : ""}
+          onClick={() => handleClick("wallet")}
         >
           <MdEnergySavingsLeaf className="footerIcon" />
           wallet

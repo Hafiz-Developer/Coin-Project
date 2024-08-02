@@ -115,7 +115,7 @@ const DailyTask: React.FC = () => {
 
         // Trigger coin animation
         const coinElements = [];
-        for (let i = 0; i < 40; i++) {  // Adjust the number of coins as needed
+        for (let i = 0; i < 20; i++) {  // Adjust the number of coins as needed
           coinElements.push(<div className="coin" key={i} style={{ left: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s` }}></div>);
         }
         setCoins(coinElements);
