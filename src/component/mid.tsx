@@ -129,11 +129,7 @@ const Mid = () => {
           <img
             src={Coin}
             onClick={handleClick}
-            onMouseDown={(e) => e.preventDefault()}
-            onDragStart={(e) => e.preventDefault()}
-            onSelect={(e) => e.preventDefault()}
-            draggable={false}
-            className="coin-button no-select no-focus-outline"
+            className="coin-button "
             alt="Puma"
           />
         </div>

@@ -13,8 +13,47 @@
         flex-flow: column;
         justify-content: space-around;
     }
+    .profile h1{
+        font-size: 3rem;
+        position: absolute;
+        top: 1.5rem;
+        letter-spacing: 0.1rem;
+        color: var(--dark-mode-text);
+    } 
+    .inner_profile{
+        background-color: var(--dark-mode-nav-bg);
+        border-radius: 3rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        height: 6.5rem;
+        margin-top: 4rem;
+        padding-left: 2rem;
+        padding-block: 2rem;
+    }
+    .inner_profile .text{
+        line-height: 1.7rem;
+    }
+    .inner_profile .text h2{
+        font-size: 1.4rem;
+        text-transform: capitalize;
+    }
+    .inner_profile .text h3{
+        font-size: 1rem;
+        opacity: 0.8;
+        font-weight: lighter;
+        letter-spacing: 0.1rem;
+    }
+    .inner_profile img{
+        --number: 5em ;
+        width: var( --number);
+        height: var( --number);
+        border-radius: 100%;
+        box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.273);
+    }
     .navBarButton {
         display: flex;
+        margin-top: 3rem;
         align-items: center;
         justify-content: space-between;
     }
@@ -54,7 +93,7 @@
         gap: 0.2rem;
         font-size: 5rem;
         font-weight: bold;
-        margin-block: 3rem;
+        margin-top: 1rem;
     }
 
     .MidData .TotalCoins img {
@@ -68,10 +107,8 @@
     }
     
     .MidData .MidImgCoin img {
-        width: 100%;
-        cursor: pointer;
-        user-select: none !important;
-        margin-block: 3rem;
+        width: 100% ;
+        margin-top: 3rem;
     }
     @keyframes floatUp {
         0% {
@@ -87,7 +124,6 @@
     
     .coin-button {
         transition: transform 0.1s ease;
-        user-select: none !important;
     }
     
     .coin-button:active {
@@ -110,7 +146,7 @@
         width: 100%;
         position: absolute;
         inset: 0;
-        margin-block: 2rem;
+        margin-top: 2rem;
     }
 
     .energy .energyText {
@@ -229,9 +265,7 @@ width: 100%;
         font-size: 1.2rem;
     }
 
-    .MidData .TotalCoins {
-        margin-top: 2rem;
-    }
+   
 
  
     .footerBtn {
@@ -269,9 +303,6 @@ width: 100%;
         margin-top: 1.5rem;
     }
 
-    .MidData .MidImgCoin {
-        margin-block: 2.1rem;
-    }
 
  
 
