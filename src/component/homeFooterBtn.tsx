@@ -49,7 +49,7 @@ const FooterBtn = () => {
           onClick={() => handleClick("setting")}
         >
           <MdEnergySavingsLeaf className="footerIcon" />
-          setting
+          wallet
         </button>
       </div>
     </>
