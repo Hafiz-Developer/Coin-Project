@@ -33,6 +33,7 @@ const DailyTask: React.FC = () => {
   const [claimedDays, setClaimedDays] = useState<number[]>([]);
   const [remainingTime, setRemainingTime] = useState<number>(0);
   const [totalCoinsCollected, setTotalCoinsCollected] = useState<number>(0);
+  const [coins, setCoins] = useState<Array<JSX.Element>>([]);
 
   useEffect(() => {
     const calculateRemainingTime = () => {
@@ -89,9 +90,7 @@ const DailyTask: React.FC = () => {
   }, []);
 
   const openForm = () => setState(true);
-  const closeForm = () => {
-    setState(false);
-  };
+  const closeForm = () => setState(false);
 
   const handleClaimNow = () => {
     const dayToClaim = days.find((day) => day.id === activeDayId);
@@ -113,11 +112,21 @@ const DailyTask: React.FC = () => {
         setClaimedDays(updatedClaimedDays); // Update the claimed days
         setTotalCoinsCollected(updatedTotalCoins); // Update total coins collected
         toast.info(`You have claimed ${dayToClaim.coin} coins!`); // Show toast
+
+        // Trigger coin animation
+        const coinElements = [];
+        for (let i = 0; i < 40; i++) {  // Adjust the number of coins as needed
+          coinElements.push(<div className="coin" key={i} style={{ left: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s` }}></div>);
+        }
+        setCoins(coinElements);
+        
+        // Remove coin animation elements after animation ends
+        setTimeout(() => setCoins([]), 4000); // Adjust this timeout to match the duration of your animation
       }
     }
   };
 
-  const formatCoins = (coin:any) => {
+  const formatCoins = (coin: any) => {
     if (coin >= 1000000) {
       return (coin / 1000000).toFixed(1) + 'm';
     } else if (coin >= 1000) {
@@ -137,6 +146,9 @@ const DailyTask: React.FC = () => {
   return (
     <>
       <ToastContainer />
+      <div className="coin-container">
+        {coins}
+      </div>
       <div className="DailyTask">
         <h1>Daily Task</h1>
         <div className={`DailyTaskClick ${remainingTime ? "ahmad" : ""}`}>
