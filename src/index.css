@@ -1,80 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
+
+* {
+	margin: 0%;
+	padding: 0%;
+	box-sizing: border-box;
 }
-html{
+
+html {
 	font-size: 62.5%;
 }
-@media (max-width : 600px) {
-	body {
-		width: 100vw;
-		height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: #fff;
-		background-color: #121212;
-	}
-	.mainContainer{
-		background: linear-gradient(to top , #0b0c0e , #00446d);
-		height: 100dvh;
-		padding: 2rem 4rem;
-	}
-	@keyframes floatUp {
-		0% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-		100% {
-			opacity: 0;
-			transform: translateY(-50px);
-		}
-	}
-	
-	.coin-button {
-		transition: transform 0.1s ease;
-	}
-	
-	.coin-button:active {
-		transform: scale(0.98);
-	}
-	.floating-text {
-		position: absolute;
-		animation: floatUp 2s forwards;
-		pointer-events: none;
-		font-size: 2.5rem;
-		color: #03395A;
-		font-weight: 700;
-	}
-
+:root{
+	--dark-mode-bg: rgba(0, 0, 0, 0.292);
+	--dark-mode-text: #fff;
+	--dark-main-container-liner-1: #152026;  
+	--dark-main-container-liner-2: #18191B;  
+	--dark-mode-nav-bg: #353a3d49;
+	--dark-mode-yellow: #FDB224;
+	--dark-mode-percent-bg : #012237; 
+	--dark-mode-percent-bg-linear-1: #dc7b0c;
+	--dark-mode-percent-bg-linear-2: #fff973 ;
+	--dark-mode-footer-bg: #161D22 ;
+	--dark-mode-footer-btn-text: #949499 ;
+	--dark-mode-footer-bg-active: #3636367e ;
+	--dark-mode-footer-active-text-clr:  rgba(255, 255, 255, 0.86)  ;
+	--dark-mode-form-popup-bg: #171A1D;
+	--dark-mode-form-popup-btn-bg: rgba(255, 255, 255, 0.2);
+	--dark-mode-click-bg: #27292cb8;
+	--dark-mode-coin-collect: rgba(0, 0, 0, 0.17);
+	--dark-mode-icon-tick: 	#22bb33;
+	--dark-mode-timer-text-color: rgb(234, 64, 64);
+} 
+body {
+	 font-family: "Roboto Flex", sans-serif;
+	width: 100vw;
+	height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--dark-mode-text);
+	background-color: var(--dark-mode-bg);
 }
 
 
-@media (max-width : 550px) {
-
-	.mainContainer{
-		padding: 2rem clamp(1.5rem , 1vw , 4rem);
-	}
-
-}
-@media (max-width : 460px) {
-
-	.mainContainer{
-		padding: 3rem  clamp(1.5rem , 1vw , 4rem) ;
-	}
-
-
-}
-
-@media (max-width : 323px) {
-
-	.mainContainer{
-		padding: 3rem  clamp(0.7rem , 1vw , 4rem) ;
-	}
-
-}
+  
+ 
+  

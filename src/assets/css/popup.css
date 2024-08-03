@@ -1,0 +1,162 @@
+.form-popup {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-top: 2rem;
+    margin: auto;
+    background-color: var(--dark-mode-form-popup-bg);
+    height: calc(100dvh - 40dvh);
+    z-index: 9;
+    width: 70rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .form-popup .close{
+    font-size: 3rem;
+    position: absolute;
+    cursor: pointer;
+    top: 3rem;
+    right: 3rem;
+  }
+  .form-popup  .youtubeDivInside{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .form-popup > img{
+    width: 20%;
+    cursor: pointer;
+  }
+  .form-popup h1{
+    font-size: 3rem;
+    text-transform: capitalize;
+  }
+  .form-popup .smallImageCoin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 900;
+    font-style: oblique;
+  }
+  .smallImageCoin img{
+    width: 10%;
+    user-select: none;
+  }
+  .form-popup a{
+    text-decoration: none;
+    background-color: var(--dark-mode-form-popup-btn-bg);
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--dark-mode-text);
+    padding: 0.7rem 3.5rem;
+    border-radius: 1.2rem;
+    cursor: pointer;
+  }
+  .btn {
+    background-color: var(--dark-mode-form-popup-btn-bg);
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--dark-mode-text);
+    padding: 0.7rem 3.5rem;
+    border-radius: 1.2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+.form-popup p {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.mainFlex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem 3rem;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, 40px);
+  margin-inline: clamp(0.3rem , 2vw , 1rem);
+}
+.boxFlex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(	--dark-mode-click-bg);
+  width: 10rem;
+  height: 10rem;
+  gap: 0.2rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.boxFlex2{
+  background: var(--dark-mode-click-bg);
+  border: 1px solid var(	--dark-mode-percent-bg-linear-2);
+}
+/* .boxFlex3{
+  border: none;
+  background-color: green;
+} */
+.boxFlex :is(h1 , h2){
+font-size: 1.2rem;
+font-style: oblique;
+}
+.boxFlex img{
+  width: 50%;
+}
+.btnClaim{
+  background-color: var(--dark-mode-footer-bg-active);;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-style: oblique;
+  font-weight: 900;
+  border-radius: 1rem;
+  color: var(--dark-mode-text);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+  @media (width < 600px) {
+    .btn{
+      padding: 0.7rem 2rem;
+    }
+    .form-popup {
+      width: 100dvw;
+        margin: auto;
+        height: calc(100dvh - 50dvh);
+        z-index: 9;
+      }
+      .boxFlex img{
+        width: 40%;
+      }
+      .mainFlex{
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-inline: clamp(0.3rem , 1vw , 1rem);
+      }
+      .boxFlex{
+        width: 8rem;
+        height: 8rem;
+      }
+      .backTO{
+        font-size: 1.2rem;
+      }
+  }
+  @media (width < 388px) {
+    .mainFlex{
+      gap: 1.3rem;
+    }
+    .boxFlex{
+      width: 6rem;
+      height: 6.5rem;
+    }
+  }

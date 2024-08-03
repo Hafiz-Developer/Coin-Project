@@ -1,0 +1,364 @@
+
+    .mainContainer {
+        background: linear-gradient(to top, var(--dark-main-container-liner-1), var(--dark-main-container-liner-2));
+        height: 100dvh;
+        width: 70rem;
+        /* position: relative; */
+        /* overflow: hidden; */
+    }
+    .homeMain{
+        padding: 4rem 4rem;
+        padding-bottom: 4rem;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+    }
+    .profile h1{
+        font-size: 3rem;
+        position: absolute;
+        top: 1.5rem;
+        letter-spacing: 0.1rem;
+        color: var(--dark-mode-text);
+    } 
+    .inner_profile{
+        background-color: var(--dark-mode-nav-bg);
+        border-radius: 3rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        height: 6.5rem;
+        margin-top: 4rem;
+        padding-left: 2rem;
+        padding-block: 2rem;
+    }
+    .inner_profile .text{
+        line-height: 1.7rem;
+    }
+    .inner_profile .text h2{
+        font-size: 1.4rem;
+        text-transform: capitalize;
+    }
+    .inner_profile .text h3{
+        font-size: 1rem;
+        opacity: 0.8;
+        font-weight: lighter;
+        letter-spacing: 0.1rem;
+    }
+    .inner_profile img{
+        --number: 5em ;
+        width: var( --number);
+        height: var( --number);
+        border-radius: 100%;
+        box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.273);
+    }
+    .navBarButton {
+        display: flex;
+        margin-top: 3rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navBarButton a {
+        padding: 2rem 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        font-size: 1.4rem;
+        background-color: var(--dark-mode-nav-bg);
+        color: var(--dark-mode-text);
+        font-weight: 500;
+        border-radius: 0.7rem;
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .navBarButton a #iconNavbar {
+        color: var(--dark-mode-yellow);
+    }
+
+    .MidData {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-block: 2rem;
+    }
+
+    .MidData .TotalCoins {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+        font-size: 5rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+
+    .MidData .TotalCoins img {
+        width: 20%;
+    }
+
+    .MidData .MidImgCoin {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .MidData .MidImgCoin img {
+        width: 100% ;
+        margin-top: 3rem;
+    }
+    @keyframes floatUp {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        100% {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+    }
+    
+    .coin-button {
+        transition: transform 0.1s ease;
+    }
+    
+    .coin-button:active {
+        transform: scale(0.98);
+    }
+    
+    .floating-text {
+        position: absolute;
+        animation: floatUp 2s forwards;
+        pointer-events: none;
+        font-size: 2.5rem;
+        color: var(--dark-mode-text);
+        font-weight: 700;
+    }
+    .energyMain{
+        position: relative;
+        width: 100%;
+    }
+    .energy {
+        width: 100%;
+        position: absolute;
+        inset: 0;
+        margin-top: 2rem;
+    }
+
+    .energy .energyText {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1rem;
+    }
+    .energyText h1 {
+        text-transform: capitalize;
+        font-weight: 400;
+        color: var(	--dark-mode-timer-text-color);
+    }
+
+
+    .energyText :is(span , h2)  {
+        font-weight: 700;
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+
+    .energy .percentage {
+        margin-top: 1rem;
+        position: relative;
+        height: 1.6rem;
+        background-color: var(--dark-mode-footer-bg-active);
+        --tw-border-opacity: 1;
+        border-color: rgb(7 55 85 / var(--tw-border-opacity));
+        border-width: 1px;
+        width: 100%;
+        border-radius: 1.2rem;
+    }
+
+    .PercenetCount {
+        height: 100%;
+        background: linear-gradient(to right, var(--dark-mode-percent-bg-linear-1), var(--dark-mode-percent-bg-linear-2));
+        margin-top: 1rem;
+        border-radius: 1.2rem;
+        cursor: pointer;
+    }
+
+    .footerBtn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 70rem;
+        margin-inline:auto ;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(	--dark-mode-footer-bg);
+        /* width: 100%; */
+        border-radius: 0.5rem;
+        padding: 1.5rem 1.5rem;
+    }
+    @media (width < 700px) {
+        .footerBtn {
+
+width: 100%;
+        }
+    }
+
+    .footerBtn button {
+        color: var(	--dark-mode-footer-btn-text);
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        text-transform: capitalize;
+        background: none;
+        padding: 1.2rem 3rem;
+    }
+
+    .footerBtn .footerIcon {
+        font-size: 2rem;
+    }
+
+    .footerBtn button.active {
+        background-color: var(	--dark-mode-footer-bg-active);
+        border-radius: 0.7rem;
+        color:var(--dark-mode-footer-active-text-clr);
+        transition: 0.4s;
+    }
+
+@media (max-width : 550px) {
+  
+    .footerBtn {
+        width: 100%;
+        padding: 1.5rem clamp(1rem, 1vw, 2rem);
+    }
+    .footerBtn button {
+        font-size: 1rem;
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width : 500px) {
+
+
+
+    .footerBtn button {
+        font-size: 1rem;
+        gap: 1rem;
+        padding: 1.2rem 2rem;
+    }
+}
+
+@media (max-width : 440px) {
+    .navBarButton a {
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
+    }
+
+   
+
+ 
+    .footerBtn {
+        padding: 2rem 2rem;
+        flex-wrap: wrap;
+    }
+    .footerBtn button {
+        font-size: 1rem;
+        gap: 0.5rem;
+        padding: 0rem;
+        background: none;
+    }
+    .footerBtn button.active {
+        background: none;
+    }
+
+}
+
+@media (max-width : 400px) {
+
+
+  
+    .footerBtn .footerIcon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width : 360px) {
+    .navBarButton a {
+        padding: 1.4rem;
+        font-size: 1.2rem;
+    }
+
+    .MidData .TotalCoins {
+        margin-top: 1.5rem;
+    }
+
+
+ 
+
+}
+
+@media (max-width : 323px) {
+    .navBarButton a {
+        padding: 1.3rem;
+        font-size: 1.1rem;
+    }
+
+    .MidData .TotalCoins {
+        margin-top: 1.5rem;
+    }
+
+ 
+}
+
+@media (max-width : 323px) {
+    .navBarButton a {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+ 
+
+}
+
+    
+@media (max-width : 600px) {
+    .mainContainer {
+        width: 100dvw;
+    }
+}
+
+@media (max-width : 550px) {
+
+    .homeMain {
+        padding: 3rem clamp(1.5rem, 1vw, 4rem);
+    }
+
+}
+
+@media (max-width : 460px) {
+
+    .homeMain {
+        padding: 3rem clamp(1.5rem, 1vw, 4rem);
+    }
+
+
+}
+
+@media (max-width : 323px) {
+
+    .homeMain {
+        padding: 3rem clamp(0.7rem, 1vw, 4rem);
+    }
+
+}

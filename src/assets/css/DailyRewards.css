@@ -1,0 +1,262 @@
+@keyframes coinFall {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  .coin {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 4rem;
+    height: 4rem;
+    background: url('../images/textImage.png') no-repeat center center;
+    background-size: contain;
+    animation: coinFall 2s ease-in-out;
+    opacity: 0;
+  }
+  
+  .coin-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+.daily{
+    padding: 0rem 4rem;
+}
+
+.dataFirst {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dataFirst img {
+    width: 40%;
+}
+
+.dataFirst h1 {
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    font-style: oblique;
+    position: relative;
+    top: -2rem;
+}
+
+/* .youtube{
+    margin-top: -5rem;
+} */
+
+.youtube h1 , .DailyTask h1  , .lastTask h1{
+    font-size: 1.8rem;
+}
+.youtubeClick , .DailyTaskClick , .lastTask_Click{
+    background-color: var(--dark-mode-click-bg);
+}
+.ahmad{
+    background-color: var(	--dark-mode-coin-collect);
+}
+.youtubeClick {
+    border-radius: 5rem;
+    margin-top: 2rem;
+    padding: 0.2rem 2rem 0.2rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+.tick{
+    color:  var(--dark-mode-icon-tick);
+}
+
+
+
+.youtubeClick :is(.first, .insideText) {
+    display: flex;
+    align-items: center;
+}
+
+.textYoutube {
+    display: flex;
+    flex-flow: column;
+}
+
+.textYoutube h1 , .textDailyTask h1 , .lastTask_text h1 {
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+    font-weight: 100;
+}
+
+.insideText , .DailyTask_insideText , .lastTask_insideText {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    position: relative;
+    right: 0.3rem;
+    top: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.youtubeClick .first > img  {
+    width: 15%;
+    cursor: pointer;
+}
+
+
+.insideText img {
+    width: 4%;
+}
+
+.second , .DailyTask_second , .lastTask_second {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 2s ease-in-out;
+}
+
+.DailyTask{
+    user-select: none;
+    margin-top: 1.5rem;
+}
+
+.DailyTaskClick{
+    border-radius: 5rem;
+    margin-top: 1.5rem;
+    padding-inline: 0rem  2rem;
+    display: flex;
+    height: 7rem;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+.DailyTask :is(.DailyTaskClick , .DailyTask_first , .DailyTask_second){
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.DailyTask_first img{
+    width: 15%;
+    cursor: pointer;
+}
+.DailyTask_insideText > img{
+  width: 5%;
+  cursor: pointer;
+
+}
+
+
+.lastTask{
+    user-select: none;
+    margin-block: 2.5rem;
+}
+
+.lastTask_Click{
+    border-radius: 5rem;
+    margin-top: 1.5rem;
+    padding: 0.1rem 2rem 0.1rem 1rem;
+    display: flex;
+    height: 6rem;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.lastTask :is(.lastTask_Click , .lastTask_first, .lastTask_insideText){
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.lastTask_first img{
+    width: 16%;
+    cursor: pointer;
+    position: relative;
+    top: 0.3rem;
+}
+.lastTask_insideText > img{
+  width: 5%;
+  cursor: pointer;
+
+}
+
+
+
+@media (max-width : 500px) {
+    .youtubeClick {
+        padding: 0.7rem 2rem 0.7rem 0rem;
+    }
+  
+    .lastTask_Click{
+        padding: 0.8rem 2rem 0.8rem 1rem;
+    }
+}
+
+
+
+@media (max-width : 550px) {
+
+    .daily {
+        padding-inline:  clamp(1.5rem, 1vw, 4rem);
+    }
+    .DailyTaskClick{
+        padding-inline: 1rem;
+        height: 6rem;
+    }
+
+}
+
+@media (max-width : 460px) {
+
+    .daily {
+        padding-inline:  clamp(1.5rem, 1vw, 4rem);
+    }
+    .textYoutube h1 , .textDailyTask h1 , .lastTask_text h1 {
+        font-size: 1.2rem;
+    }
+    .youtubeClick {
+        padding: 0.3rem 1rem 0.3rem 0rem;
+    }
+    .youtubeClick .first > img  {
+        width: 17%;
+        cursor: pointer;
+    }
+    .insideText , .DailyTask_insideText , .lastTask_insideText {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    .DailyTaskClick{
+        height: 5rem;
+    }
+.lastTask_Click{
+    height: 5rem;
+} 
+}
+
+@media (max-width : 365px) {
+
+    .daily {
+        padding-inline:  clamp(0.7rem, 1vw, 4rem);
+    }
+    .youtubeClick .first > img  {
+        width: 18%;
+    }
+    .lastTask_Click{
+        height: 4rem;
+    } 
+
+}

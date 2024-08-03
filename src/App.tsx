@@ -1,20 +1,25 @@
-import Main from "./component/main"
-import NavBarButton from "./component/navBarButton"
-import './assets/css/firtsPage.css'
-import FooterBtn from "./component/homeFooterBtn"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Home from "./component/home";
+import Daily from "./component/dailyRewards";
+import InviteFriends from "./component/inviteFrieds";
+import FooterBtn from "./component/homeFooterBtn";
 
 function App() {
-
   return (
     <>
-   <div className="mainContainer">
-    <NavBarButton/>
-    <Main/>
-    <FooterBtn/>
-   </div>
+      <Router>
+      <div className="mainContainer">
+        <Routes>
+          <Route path="*" element={<Home />} />
+          <Route path="/DailyRewards" element={<Daily />} />
+          <Route path="/InviteFriends" element={<InviteFriends />}/>
+        </Routes>
+        <FooterBtn />
+        </div>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

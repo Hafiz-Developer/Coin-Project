@@ -1,0 +1,127 @@
+.inviteFriend{
+    padding: 4rem 2rem;
+}
+
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.heading h1{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 800;
+}
+.heading p{
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    margin-block: 1.2rem;
+    font-weight: 100;
+}
+.note {
+    margin-top: 3rem;
+}
+.note h1{
+    font-size: 3rem;
+    font-weight: 700;
+}
+.note p{
+    font-size: 1.4rem;
+    width: calc(100% - 20%);
+    line-height: 2rem;
+    margin-block: 1rem;
+    text-transform: capitalize;
+}
+.gift{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-mode-click-bg);
+    user-select: none;
+    margin-top: 4rem;
+    border-radius: 2rem;
+    height: 7.5rem;
+}
+.gift img{
+    width: 20%;
+}
+.inner_text_gift h2{
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+.inner_text_gift span{
+    font-size: 1.2rem;
+        display: flex;
+        margin-top: 0.4rem;
+    align-items: center;
+}
+.inner_text_gift span img{
+
+    width: 4%;
+}
+.inner_text_gift span p{
+    color: var(	--dark-mode-percent-bg-linear-2);
+    margin-right: 0.5rem;
+}
+
+.inviteCopyLink{
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 12rem;
+    right: 0;
+    left: 0;
+    width: 67rem;
+    margin-inline: auto;
+    z-index: 1;
+}
+.inviteFriend button{
+
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    text-transform: capitalize;
+    height: 6rem;
+    border-radius: 1rem;
+    background-color:  var(--dark-mode-click-bg);
+}
+.inviteFriend button:nth-child(1){
+    width: 100%;
+    font-weight: lighter;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.inviteFriend button:nth-child(2){
+    width: 7rem;
+   font-size: 3rem;
+}
+@media (width < 600px) {
+    .inviteCopyLink{
+        width: calc(100dvw - 8dvw);
+    }
+}
+@media (width < 500px) {
+    .gift{
+        margin-top: 2rem;
+        border-radius: 1rem;
+        height: 6rem;
+    }
+    .note p{
+        width: calc(100% - 0%);
+    }
+}
+@media (width < 420px) {
+    .inviteFriend{
+        padding: 4rem 1rem;
+    }
+    .inviteCopyLink{
+        position: absolute;
+        bottom: 9rem;
+    }
+}
